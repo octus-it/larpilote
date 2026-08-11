@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import Reveal from './Reveal'
 import { plans } from '../data'
 
-export default function Pricing({ onSelectPlan }) {
+export default function Pricing() {
   return (
     <section id="tarifs" className="max-w-6xl mx-auto px-6 py-24">
       <Reveal className="max-w-xl mb-14">
@@ -52,9 +53,8 @@ export default function Pricing({ onSelectPlan }) {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#contact"
-                onClick={() => onSelectPlan?.(p)}
+              <Link
+                to={`/commander/${p.slug}`}
                 className={`text-center px-5 py-3 rounded-sm text-sm font-medium transition-colors ${
                   p.featured
                     ? 'bg-ochre text-ink hover:bg-paper'
@@ -62,7 +62,7 @@ export default function Pricing({ onSelectPlan }) {
                 }`}
               >
                 Choisir {p.name}
-              </a>
+              </Link>
             </motion.div>
           </Reveal>
         ))}

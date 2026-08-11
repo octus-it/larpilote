@@ -107,6 +107,7 @@ export const steps = [
 
 export const plans = [
   {
+    slug: 'essentiel',
     name: 'Essentiel',
     price: '75 000',
     unit: 'FCFA / bien / mois',
@@ -120,6 +121,7 @@ export const plans = [
     featured: false,
   },
   {
+    slug: 'pro',
     name: 'Pro',
     price: '180 000',
     unit: 'FCFA / mois',
@@ -134,6 +136,7 @@ export const plans = [
     featured: true,
   },
   {
+    slug: 'sur-mesure',
     name: 'Sur-mesure',
     price: 'À discuter',
     unit: 'portefeuille de biens',

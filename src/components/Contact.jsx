@@ -1,24 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Reveal from './Reveal'
 
-export default function Contact({ selectedPlan, onClearPlan }) {
-  const [form, setForm] = useState({ name: '', contact: '', biens: '', message: '', offer: '' })
+export default function Contact() {
+  const [form, setForm] = useState({ name: '', contact: '', biens: '', message: '' })
   const [sent, setSent] = useState(false)
-
-  useEffect(() => {
-    if (selectedPlan) {
-      setForm((f) => ({ ...f, offer: selectedPlan.name }))
-    }
-  }, [selectedPlan])
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  function clearPlan() {
-    onClearPlan?.()
-    setForm((f) => ({ ...f, offer: '' }))
   }
 
   function handleSubmit(e) {
@@ -58,41 +47,10 @@ export default function Contact({ selectedPlan, onClearPlan }) {
               className="py-16 text-center"
             >
               <p className="font-display text-2xl mb-2">Message envoyé.</p>
-              <p className="text-sm text-ink/60">
-                {form.offer
-                  ? `On revient vers vous très vite au sujet de l’offre ${form.offer}.`
-                  : 'On revient vers vous très vite.'}
-              </p>
+              <p className="text-sm text-ink/60">On revient vers vous très vite.</p>
             </motion.div>
           ) : (
             <div className="grid gap-4">
-              {selectedPlan && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex items-center justify-between gap-3 rounded-sm border border-dashed border-ochre/50 bg-paper px-4 py-3"
-                >
-                  <div>
-                    <span className="block font-mono text-[10px] tracking-widest text-marine-dark mb-0.5">
-                      OFFRE SÉLECTIONNÉE
-                    </span>
-                    <span className="font-display text-sm text-ink">{selectedPlan.name}</span>
-                    <span className="ml-2 font-mono text-[11px] text-ink/50">
-                      {selectedPlan.price} {selectedPlan.unit}
-                    </span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={clearPlan}
-                    aria-label="Retirer l’offre sélectionnée"
-                    className="text-lg leading-none text-ink/40 transition-colors hover:text-ochre"
-                  >
-                    &times;
-                  </button>
-                </motion.div>
-              )}
-              <input type="hidden" name="offer" value={form.offer} />
               <div>
                 <label className="block text-xs font-mono tracking-widest text-ink/50 mb-1">
                   NOM

@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const links = [
-  { href: '#services', label: 'Services' },
-  { href: '#biens', label: 'Biens pilotés' },
-  { href: '#comment', label: 'Comment ça marche' },
-  { href: '#tarifs', label: 'Tarifs' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#biens', label: 'Biens pilotés' },
+  { href: '/#comment', label: 'Comment ça marche' },
+  { href: '/#tarifs', label: 'Tarifs' },
+  { href: '/#faq', label: 'FAQ' },
 ]
 
 export default function Nav() {
@@ -47,7 +47,7 @@ export default function Nav() {
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <a
-            href="#top"
+            href="/#top"
             className={`font-display text-xl font-semibold tracking-tight transition-colors ${
               scrolled ? 'text-ink' : 'text-paper'
             }`}
@@ -68,7 +68,7 @@ export default function Nav() {
           </nav>
           <div className="flex items-center gap-3">
             <a
-              href="#contact"
+              href="/#contact"
               className={`hidden md:inline-block text-sm font-medium px-4 py-2 rounded-sm transition-colors ${
                 scrolled
                   ? 'bg-ink text-paper hover:bg-marine'
@@ -152,7 +152,7 @@ export default function Nav() {
 
               <div className="mt-auto border-t border-dashed border-ink/15 px-6 py-6">
                 <a
-                  href="#contact"
+                  href="/#contact"
                   onClick={() => setOpen(false)}
                   className="block rounded-sm bg-ink px-4 py-3 text-center text-sm font-medium text-paper transition-colors hover:bg-marine"
                 >

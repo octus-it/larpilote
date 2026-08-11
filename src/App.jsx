@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
@@ -11,23 +11,33 @@ import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Order from './components/Order'
 
-export default function App() {
-  const [selectedPlan, setSelectedPlan] = useState(null)
-
+function Home() {
   return (
-    <div className="min-h-screen bg-paper text-ink font-body">
-      <Nav />
+    <>
       <Hero />
       <Stats />
       <Marquee />
       <Services />
       <Gallery />
       <Process />
-      <Pricing onSelectPlan={setSelectedPlan} />
+      <Pricing />
       <Testimonials />
       <FAQ />
-      <Contact selectedPlan={selectedPlan} onClearPlan={() => setSelectedPlan(null)} />
+      <Contact />
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-paper text-ink font-body">
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/commander/:slug" element={<Order />} />
+      </Routes>
       <Footer />
     </div>
   )
