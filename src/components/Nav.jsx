@@ -34,93 +34,95 @@ export default function Nav() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-noir/10">
-      <div className="max-w-page mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between">
-        <Logo />
+    <>
+      <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-noir/10">
+        <div className="max-w-page mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between">
+          <Logo />
 
-        <nav className="hidden lg:flex items-center gap-1">
-          {navGroups.map((g) =>
-            g.items ? (
-              <div
-                key={g.label}
-                className="relative"
-                onMouseEnter={() => enterGroup(g.label)}
-                onMouseLeave={leaveGroup}
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenGroup(openGroup === g.label ? null : g.label)}
-                  className="flex items-center gap-1.5 px-4 py-2 text-sm text-noir/75 hover:text-noir transition-colors"
-                  aria-expanded={openGroup === g.label}
+          <nav className="hidden lg:flex items-center gap-1">
+            {navGroups.map((g) =>
+              g.items ? (
+                <div
+                  key={g.label}
+                  className="relative"
+                  onMouseEnter={() => enterGroup(g.label)}
+                  onMouseLeave={leaveGroup}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenGroup(openGroup === g.label ? null : g.label)}
+                    className="flex items-center gap-1.5 px-4 py-2 text-sm text-noir/75 hover:text-noir transition-colors"
+                    aria-expanded={openGroup === g.label}
+                  >
+                    {g.label}
+                    <Icon
+                      name="arrowRight"
+                      className={`w-3 h-3 rotate-90 transition-transform ${openGroup === g.label ? 'rotate-[270deg]' : ''}`}
+                      strokeWidth={1.5}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {openGroup === g.label && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 6 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-0 top-full pt-2 w-64"
+                      >
+                        <div className="bg-paper border border-noir/10 shadow-xl shadow-noir/5">
+                          {g.items.map((item) => (
+                            <Link
+                              key={item.to}
+                              to={item.to}
+                              className="block px-5 py-3.5 border-b border-noir/5 last:border-0 hover:bg-beige/40 transition-colors"
+                            >
+                              <span className="block text-sm font-display">{item.label}</span>
+                              {item.text && <span className="block mt-0.5 text-xs opacity-60">{item.text}</span>}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  key={g.to}
+                  to={g.to}
+                  className="px-4 py-2 text-sm text-noir/75 hover:text-noir transition-colors"
                 >
                   {g.label}
-                  <Icon
-                    name="arrowRight"
-                    className={`w-3 h-3 rotate-90 transition-transform ${openGroup === g.label ? 'rotate-[270deg]' : ''}`}
-                    strokeWidth={1.5}
-                  />
-                </button>
-                <AnimatePresence>
-                  {openGroup === g.label && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 6 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute left-0 top-full pt-2 w-64"
-                    >
-                      <div className="bg-paper border border-noir/10 shadow-xl shadow-noir/5">
-                        {g.items.map((item) => (
-                          <Link
-                            key={item.to}
-                            to={item.to}
-                            className="block px-5 py-3.5 border-b border-noir/5 last:border-0 hover:bg-beige/40 transition-colors"
-                          >
-                            <span className="block text-sm font-display">{item.label}</span>
-                            {item.text && <span className="block mt-0.5 text-xs opacity-60">{item.text}</span>}
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <Link
-                key={g.to}
-                to={g.to}
-                className="px-4 py-2 text-sm text-noir/75 hover:text-noir transition-colors"
-              >
-                {g.label}
-              </Link>
-            )
-          )}
-        </nav>
+                </Link>
+              )
+            )}
+          </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
-          <a
-            href={whatsappLink('Bonjour LARPILOTE, j’aimerais échanger sur mon activité.')}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Parler à LARPILOTE sur WhatsApp"
-            className="p-2 text-gold-dark hover:text-noir transition-colors"
+          <div className="hidden lg:flex items-center gap-4">
+            <a
+              href={whatsappLink('Bonjour LARPILOTE, j’aimerais échanger sur mon activité.')}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Parler à LARPILOTE sur WhatsApp"
+              className="p-2 text-gold-dark hover:text-noir transition-colors"
+            >
+              <WhatsAppIcon className="w-[18px] h-[18px]" />
+            </a>
+            <Button to="/contact" variant="dark">
+              Parler à LARPILOTE
+            </Button>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="lg:hidden p-2 -mr-2"
+            aria-label="Ouvrir le menu"
           >
-            <WhatsAppIcon className="w-[18px] h-[18px]" />
-          </a>
-          <Button to="/contact" variant="dark">
-            Parler à LARPILOTE
-          </Button>
+            <Icon name="menu" className="w-6 h-6" strokeWidth={1.5} />
+          </button>
         </div>
-
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="lg:hidden p-2 -mr-2"
-          aria-label="Ouvrir le menu"
-        >
-          <Icon name="menu" className="w-6 h-6" strokeWidth={1.5} />
-        </button>
-      </div>
+      </header>
 
       <AnimatePresence>
         {open && (
@@ -212,6 +214,6 @@ export default function Nav() {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   )
 }
