@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { navGroups, whatsappLink } from '../data'
 import { Icon, WhatsAppIcon } from '../lib/icons'
 import Button from './ui/Button'
+import Logo from './Logo'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -35,9 +36,7 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-noir/10">
       <div className="max-w-page mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between">
-        <Link to="/" className="font-display text-xl tracking-tight shrink-0">
-          LARPILOTE
-        </Link>
+        <Logo />
 
         <nav className="hidden lg:flex items-center gap-1">
           {navGroups.map((g) =>
@@ -141,7 +140,7 @@ export default function Nav() {
               className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-noir text-paper z-50 lg:hidden flex flex-col"
             >
               <div className="flex items-center justify-between px-6 h-[72px] border-b border-paper/10 shrink-0">
-                <span className="font-display text-lg">LARPILOTE</span>
+                <Logo />
                 <button type="button" onClick={() => setOpen(false)} aria-label="Fermer le menu" className="p-2 -mr-2">
                   <Icon name="close" className="w-6 h-6" strokeWidth={1.5} />
                 </button>

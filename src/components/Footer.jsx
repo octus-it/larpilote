@@ -7,8 +7,8 @@ export default function Footer() {
       <div className="max-w-page mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-8">
           <div className="col-span-2">
-            <p className="font-display text-2xl">LARPILOTE</p>
-            <p className="mt-3 text-sm opacity-60 max-w-[220px] leading-relaxed">
+            <img src="/images/logo-lockup.png" alt="LARPILOTE" className="h-9 w-auto -ml-1" />
+            <p className="mt-4 text-sm opacity-60 max-w-[220px] leading-relaxed">
               Votre logement. Votre contrôle. Notre pilotage.
             </p>
           </div>
