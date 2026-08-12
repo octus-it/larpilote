@@ -1,168 +1,218 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-
-const links = [
-  { href: '/#services', label: 'Services' },
-  { href: '/#biens', label: 'Biens pilotés' },
-  { href: '/#comment', label: 'Comment ça marche' },
-  { href: '/#tarifs', label: 'Tarifs' },
-  { href: '/#faq', label: 'FAQ' },
-]
+import { navGroups, whatsappLink } from '../data'
+import { Icon, WhatsAppIcon } from '../lib/icons'
+import Button from './ui/Button'
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [openGroup, setOpenGroup] = useState(null)
+  const [openMobileGroup, setOpenMobileGroup] = useState(null)
+  const location = useLocation()
+  const closeTimer = useRef(null)
 
   useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 8)
-    }
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    setOpen(false)
+    setOpenGroup(null)
+  }, [location.pathname])
 
   useEffect(() => {
-    if (!open) return
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    function onKey(e) {
-      if (e.key === 'Escape') setOpen(false)
-    }
-    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = open ? 'hidden' : ''
     return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
     }
   }, [open])
 
+  const enterGroup = (label) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setOpenGroup(label)
+  }
+  const leaveGroup = () => {
+    closeTimer.current = setTimeout(() => setOpenGroup(null), 120)
+  }
+
   return (
-    <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 inset-x-0 z-40 transition-colors duration-300 ${
-          scrolled ? 'bg-paper/90 backdrop-blur border-b border-ink/10' : 'bg-transparent'
-        }`}
-      >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-noir/10">
+      <div className="max-w-page mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between">
+        <Link to="/" className="font-display text-xl tracking-tight shrink-0">
+          LARPILOTE
+        </Link>
+
+        <nav className="hidden lg:flex items-center gap-1">
+          {navGroups.map((g) =>
+            g.items ? (
+              <div
+                key={g.label}
+                className="relative"
+                onMouseEnter={() => enterGroup(g.label)}
+                onMouseLeave={leaveGroup}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenGroup(openGroup === g.label ? null : g.label)}
+                  className="flex items-center gap-1.5 px-4 py-2 text-sm text-noir/75 hover:text-noir transition-colors"
+                  aria-expanded={openGroup === g.label}
+                >
+                  {g.label}
+                  <Icon
+                    name="arrowRight"
+                    className={`w-3 h-3 rotate-90 transition-transform ${openGroup === g.label ? 'rotate-[270deg]' : ''}`}
+                    strokeWidth={1.5}
+                  />
+                </button>
+                <AnimatePresence>
+                  {openGroup === g.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 6 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute left-0 top-full pt-2 w-64"
+                    >
+                      <div className="bg-paper border border-noir/10 shadow-xl shadow-noir/5">
+                        {g.items.map((item) => (
+                          <Link
+                            key={item.to}
+                            to={item.to}
+                            className="block px-5 py-3.5 border-b border-noir/5 last:border-0 hover:bg-beige/40 transition-colors"
+                          >
+                            <span className="block text-sm font-display">{item.label}</span>
+                            {item.text && <span className="block mt-0.5 text-xs opacity-60">{item.text}</span>}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Link
+                key={g.to}
+                to={g.to}
+                className="px-4 py-2 text-sm text-noir/75 hover:text-noir transition-colors"
+              >
+                {g.label}
+              </Link>
+            )
+          )}
+        </nav>
+
+        <div className="hidden lg:flex items-center gap-4">
           <a
-            href="/#top"
-            className={`font-display text-xl font-semibold tracking-tight transition-colors ${
-              scrolled ? 'text-ink' : 'text-paper'
-            }`}
+            href={whatsappLink('Bonjour LARPILOTE, j’aimerais échanger sur mon activité.')}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Parler à LARPILOTE sur WhatsApp"
+            className="p-2 text-gold-dark hover:text-noir transition-colors"
           >
-            Larpilote
+            <WhatsAppIcon className="w-[18px] h-[18px]" />
           </a>
-          <nav
-            className={`hidden md:flex items-center gap-8 text-sm transition-colors ${
-              scrolled ? 'text-ink/80' : 'text-paper/90'
-            }`}
-          >
-            {links.map((l) => (
-              <a key={l.href} href={l.href} className="relative group">
-                {l.label}
-                <span className="absolute left-0 -bottom-1 h-px w-0 bg-ochre transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
-          </nav>
-          <div className="flex items-center gap-3">
-            <a
-              href="/#contact"
-              className={`hidden md:inline-block text-sm font-medium px-4 py-2 rounded-sm transition-colors ${
-                scrolled
-                  ? 'bg-ink text-paper hover:bg-marine'
-                  : 'bg-paper text-ink hover:bg-ochre hover:text-paper'
-              }`}
-            >
-              Nous contacter
-            </a>
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              aria-label="Ouvrir le menu"
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              className={`md:hidden flex w-10 h-10 flex-col items-center justify-center gap-[5px] transition-colors ${
-                scrolled ? 'text-ink' : 'text-paper'
-              }`}
-            >
-              <span className="block h-px w-6 bg-current" />
-              <span className="block h-px w-6 bg-current" />
-              <span className="block h-px w-4 self-end mr-2 bg-current" />
-            </button>
-          </div>
+          <Button to="/contact" variant="dark">
+            Parler à LARPILOTE
+          </Button>
         </div>
-      </motion.header>
+
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="lg:hidden p-2 -mr-2"
+          aria-label="Ouvrir le menu"
+        >
+          <Icon name="menu" className="w-6 h-6" strokeWidth={1.5} />
+        </button>
+      </div>
 
       <AnimatePresence>
         {open && (
           <>
             <motion.div
-              key="backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-noir/40 z-40 lg:hidden"
               onClick={() => setOpen(false)}
-              className="fixed inset-0 z-40 bg-ink/50 backdrop-blur-sm md:hidden"
             />
-            <motion.aside
-              key="drawer"
-              id="mobile-menu"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Menu de navigation"
+            <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="grain stub-edge-left fixed top-0 right-0 z-50 flex h-full w-full max-w-xs flex-col bg-paper text-ink shadow-2xl md:hidden"
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-noir text-paper z-50 lg:hidden flex flex-col"
             >
-              <div className="flex h-16 items-center justify-between border-b border-dashed border-ink/15 px-6">
-                <span className="font-display text-lg font-semibold tracking-tight">Menu</span>
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  aria-label="Fermer le menu"
-                  className="stamp flex h-9 w-9 items-center justify-center text-ink transition-colors hover:border-ochre hover:text-ochre"
-                >
-                  <span className="text-lg leading-none">&times;</span>
+              <div className="flex items-center justify-between px-6 h-[72px] border-b border-paper/10 shrink-0">
+                <span className="font-display text-lg">LARPILOTE</span>
+                <button type="button" onClick={() => setOpen(false)} aria-label="Fermer le menu" className="p-2 -mr-2">
+                  <Icon name="close" className="w-6 h-6" strokeWidth={1.5} />
                 </button>
               </div>
 
-              <nav className="flex flex-col gap-1 px-6 py-8 font-display text-2xl">
-                {links.map((l, i) => (
-                  <motion.a
-                    key={l.href}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    initial={{ opacity: 0, x: 24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + i * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="group flex items-center justify-between border-b border-dashed border-ink/10 py-3"
-                  >
-                    {l.label}
-                    <span className="text-ochre opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                      →
-                    </span>
-                  </motion.a>
-                ))}
+              <div className="p-6 flex flex-col gap-3 shrink-0">
+                <Button to="/proprietaires" variant="light" className="w-full">
+                  Je suis propriétaire
+                </Button>
+                <Button to="/conciergeries" variant="outlineLight" className="w-full">
+                  Je suis une conciergerie
+                </Button>
+              </div>
+
+              <nav className="flex flex-col px-6 py-2 gap-1 overflow-y-auto">
+                {navGroups.map((g) =>
+                  g.items ? (
+                    <div key={g.label} className="border-b border-paper/10">
+                      <button
+                        type="button"
+                        onClick={() => setOpenMobileGroup(openMobileGroup === g.label ? null : g.label)}
+                        className="w-full flex items-center justify-between py-3.5 text-base"
+                      >
+                        {g.label}
+                        <Icon
+                          name="arrowRight"
+                          className={`w-4 h-4 transition-transform ${openMobileGroup === g.label ? 'rotate-90' : ''}`}
+                          strokeWidth={1.5}
+                        />
+                      </button>
+                      <div
+                        className="grid transition-all duration-200"
+                        style={{ gridTemplateRows: openMobileGroup === g.label ? '1fr' : '0fr' }}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="pb-3 flex flex-col gap-1">
+                            {g.items.map((item) => (
+                              <Link key={item.to} to={item.to} className="py-2 pl-3 text-sm opacity-75 border-l border-paper/20">
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link key={g.to} to={g.to} className="py-3.5 border-b border-paper/10 text-base">
+                      {g.label}
+                    </Link>
+                  )
+                )}
               </nav>
 
-              <div className="mt-auto border-t border-dashed border-ink/15 px-6 py-6">
+              <div className="mt-auto p-6 border-t border-paper/10 flex flex-col gap-3 shrink-0">
                 <a
-                  href="/#contact"
-                  onClick={() => setOpen(false)}
-                  className="block rounded-sm bg-ink px-4 py-3 text-center text-sm font-medium text-paper transition-colors hover:bg-marine"
+                  href={whatsappLink('Bonjour LARPILOTE, j’aimerais échanger sur mon activité.')}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 text-sm text-gold-light"
                 >
-                  Nous contacter
+                  <WhatsAppIcon className="w-4 h-4" />
+                  Parler à LARPILOTE sur WhatsApp
                 </a>
+                <Button to="/contact" variant="light" className="w-full">
+                  Parler à LARPILOTE
+                </Button>
               </div>
-            </motion.aside>
+            </motion.div>
           </>
         )}
       </AnimatePresence>
-    </>
+    </header>
   )
 }

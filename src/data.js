@@ -1,192 +1,397 @@
-export const stubs = [
-  {
-    channel: 'AIRBNB',
-    from: 'Fatou D.',
-    excerpt: 'Bonjour, la villa de Ngor est-elle dispo ce week-end ?',
-    time: '08:14',
-  },
-  {
-    channel: 'WHATSAPP',
-    from: 'Moussa S.',
-    excerpt: 'On peut visiter l’appart de Sacré-Cœur demain ?',
-    time: '09:02',
-  },
-  {
-    channel: 'BOOKING.COM',
-    from: 'Claire M.',
-    excerpt: 'Possible d’arriver après minuit ?',
-    time: '09:47',
-  },
+// Replace with the real LARPILOTE WhatsApp number before going live.
+export const whatsappNumber = '221000000000'
+
+export function whatsappLink(message) {
+  const base = `https://wa.me/${whatsappNumber}`
+  return message ? `${base}?text=${encodeURIComponent(message)}` : base
+}
+
+export const painPoints = [
+  { icon: 'message', title: 'Messages voyageurs', text: 'Répondre aux questions avant, pendant et après le séjour.' },
+  { icon: 'calendar', title: 'Réservations', text: 'Suivre les réservations, modifications, annulations et disponibilités.' },
+  { icon: 'globe', title: 'Plusieurs plateformes', text: 'Gérer Airbnb, Booking et les autres canaux de réservation.' },
+  { icon: 'star', title: 'Avis voyageurs', text: 'Répondre aux avis et suivre les retours clients.' },
+  { icon: 'coins', title: 'Tarification', text: 'Surveiller les prix et identifier les opportunités d’amélioration.' },
+  { icon: 'alert', title: 'Incidents', text: 'Réagir rapidement lorsqu’un problème survient sur place.' },
+  { icon: 'chart', title: 'Performance', text: 'Comprendre ce qui fonctionne et ce qui peut être amélioré.' },
 ]
 
-export const stats = [
-  { value: 1200, suffix: '+', label: 'messages traités chaque mois' },
-  { value: 9, suffix: ' min', label: 'temps de réponse moyen' },
-  { value: 46, suffix: '', label: 'biens pilotés à Dakar et sa région' },
-  { value: 98, suffix: '%', label: 'de clients qui restent après 6 mois' },
-]
-
-export const channels = [
-  'Airbnb',
-  'Booking.com',
-  'WhatsApp',
-  'Email',
-  'SMS',
-  'Instagram',
-  'Google Business',
+export const solutionFlow = [
+  { title: 'Voyageur', text: 'Signale une demande ou un problème' },
+  { title: 'LARPILOTE', text: 'Analyse, répond, coordonne et suit à distance' },
+  { title: 'Propriétaire / Conciergerie', text: 'Garde le contrôle et prend les décisions nécessaires' },
+  { title: 'Prestataire local', text: 'Intervient lorsque la situation nécessite une présence physique' },
 ]
 
 export const services = [
+  { icon: 'message', title: 'Communication voyageurs', text: 'Nous gérons les échanges avec vos voyageurs avant, pendant et après leur séjour.' },
+  { icon: 'calendar', title: 'Réservations', text: 'Nous suivons vos réservations, modifications, annulations et disponibilités selon vos procédures.' },
+  { icon: 'globe', title: 'Gestion multicanal', text: 'Nous vous accompagnons dans la gestion de vos annonces sur Airbnb, Booking et les autres plateformes adaptées à votre activité.' },
+  { icon: 'chart', title: 'Optimisation', text: 'Nous identifions les possibilités d’amélioration de vos annonces, de votre visibilité et de votre stratégie.' },
+  { icon: 'handshake', title: 'Coordination à distance', text: 'Lorsqu’un incident survient, nous contactons les personnes que vous avez désignées et suivons la situation à distance.' },
+  { icon: 'clipboard', title: 'Reporting', text: 'Vous recevez une vision claire de votre activité, de vos performances et des points à améliorer.' },
+]
+
+export const servicesDetailed = [
   {
-    label: 'Messages',
-    title: 'Réponse aux voyageurs et acheteurs',
-    text: 'Chaque message reçoit une réponse en quelques minutes, jour et nuit, sur WhatsApp, email, Airbnb ou Booking.',
-    image: 'https://images.unsplash.com/photo-1719204718581-5c95889c8ec9?auto=format&fit=crop&w=900&h=1100&q=80',
+    icon: 'message',
+    title: 'Communication voyageurs',
+    intro: 'Nous prenons en charge les échanges avec vos voyageurs selon vos procédures.',
+    items: [
+      { label: 'Avant la réservation', text: 'Questions, informations et demandes.' },
+      { label: 'Avant l’arrivée', text: 'Informations pratiques et instructions.' },
+      { label: 'Pendant le séjour', text: 'Assistance et suivi des demandes.' },
+      { label: 'Après le séjour', text: 'Départ, remerciements et avis.' },
+    ],
   },
   {
-    label: 'Réservations',
-    title: 'Calendrier et disponibilités à jour',
-    text: 'Vos annonces restent synchronisées. Aucune double réservation, aucune date oubliée.',
-    image: 'https://images.unsplash.com/photo-1633526543814-9718c8922b7a?auto=format&fit=crop&w=900&h=1100&q=80',
+    icon: 'calendar',
+    title: 'Réservations',
+    intro: 'Nous suivons :',
+    bullets: ['Nouvelles réservations', 'Modifications', 'Annulations', 'Disponibilités', 'Calendriers', 'Informations voyageurs'],
   },
   {
-    label: 'Mise en relation',
-    title: 'Acheteurs et locataires qualifiés',
-    text: 'On filtre les demandes sérieuses et on vous transmet uniquement les contacts prêts à avancer.',
-    image: 'https://images.unsplash.com/photo-1758519289174-72721d274e4a?auto=format&fit=crop&w=900&h=1100&q=80',
+    icon: 'globe',
+    title: 'Gestion multicanal',
+    intro: 'Votre activité peut être présente sur plusieurs plateformes. LARPILOTE vous accompagne dans le suivi de vos canaux de réservation selon les outils et accès disponibles.',
+    tag: 'Airbnb • Booking • Autres plateformes',
   },
   {
-    label: 'Annonces',
-    title: 'Rédaction et mise à jour',
-    text: 'Textes, photos et tarifs pensés pour donner envie de réserver ou d’acheter, ajustés selon la saison.',
-    image: 'https://images.unsplash.com/photo-1695014549562-69f3b2e90da7?auto=format&fit=crop&w=900&h=1100&q=80',
+    icon: 'megaphone',
+    title: 'Optimisation des annonces',
+    intro: 'Une annonce doit être claire, attractive et cohérente avec le logement proposé. Nous pouvons intervenir sur :',
+    bullets: ['Titres', 'Descriptions', 'Informations', 'Équipements', 'Structure', 'Recommandations photos', 'Référencement interne'],
   },
   {
-    label: 'Suivi',
-    title: 'Service après-vente',
-    text: 'Arrivée, séjour, remise des clés, avis client : on accompagne chaque étape jusqu’au bout.',
-    image: 'https://images.unsplash.com/photo-1733244766159-f58f4184fd38?auto=format&fit=crop&w=900&h=1100&q=80',
+    icon: 'chart',
+    title: 'Pilotage des performances',
+    intro: 'Nous suivons les indicateurs disponibles afin d’identifier :',
+    bullets: ['Les périodes fortes', 'Les périodes creuses', 'Les opportunités', 'Les points faibles', 'Les améliorations possibles'],
   },
   {
-    label: 'Reporting',
-    title: 'Un point clair chaque mois',
-    text: 'Nombre de demandes, taux de réponse, réservations conclues : vous savez toujours où vous en êtes.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&h=1100&q=80',
+    icon: 'coins',
+    title: 'Recommandations tarifaires',
+    intro: 'Nous surveillons les éléments disponibles liés au positionnement tarifaire et formulons des recommandations adaptées à votre activité.',
+    note: 'LARPILOTE recommande. Le propriétaire ou la conciergerie conserve la décision finale.',
+  },
+  {
+    icon: 'alert',
+    title: 'Coordination des incidents',
+    intro: 'Lorsqu’un problème nécessite une intervention physique :',
+    flow: ['Voyageur', 'LARPILOTE', 'Prestataire désigné', 'Suivi', 'Propriétaire'],
+    note: 'Nous ne remplaçons pas les équipes terrain. Nous assurons le pilotage à distance.',
+  },
+  {
+    icon: 'clipboard',
+    title: 'Reporting',
+    intro: 'Selon votre formule, vous bénéficiez d’un suivi comprenant notamment :',
+    bullets: ['Activité', 'Réservations', 'Performances', 'Avis', 'Points d’attention', 'Recommandations'],
   },
 ]
 
-export const gallery = [
-  { title: 'Villa, Ngor', tag: 'Location courte durée', image: 'https://images.unsplash.com/photo-1758448756207-54505680d130?auto=format&fit=crop&w=900&h=1100&q=80' },
-  { title: 'Appartement, Sacré-Cœur', tag: 'Vente', image: 'https://images.unsplash.com/photo-1758193431351-68538bf55ec3?auto=format&fit=crop&w=900&h=700&q=80' },
-  { title: 'Duplex, Almadies', tag: 'Location courte durée', image: 'https://images.unsplash.com/photo-1643297551340-19d8ad4f20ad?auto=format&fit=crop&w=900&h=1100&q=80' },
-  { title: 'Maison, Saly', tag: 'Location & vente', image: 'https://images.unsplash.com/photo-1759372945658-1e9f56e751bd?auto=format&fit=crop&w=900&h=700&q=80' },
-  { title: 'Studio, Plateau', tag: 'Location longue durée', image: 'https://images.unsplash.com/photo-1690323223790-4df744a1a033?auto=format&fit=crop&w=900&h=1100&q=80' },
-  { title: 'Villa, Popenguine', tag: 'Vente', image: 'https://images.unsplash.com/photo-1528047705243-ebb19baf436f?auto=format&fit=crop&w=900&h=700&q=80' },
+export const processSteps = [
+  { n: '01', title: 'Vous nous présentez votre activité', text: 'Vous nous expliquez votre logement, vos plateformes et vos besoins.' },
+  { n: '02', title: 'Nous analysons', text: 'Nous identifions les tâches que vous souhaitez déléguer et le niveau de pilotage adapté.' },
+  { n: '03', title: 'Nous configurons', text: 'Nous mettons en place vos procédures, vos informations voyageurs, vos calendriers et vos contacts.' },
+  { n: '04', title: 'Nous pilotons', text: 'LARPILOTE prend en charge les tâches prévues dans votre formule.' },
+  { n: '05', title: 'Vous gardez le contrôle', text: 'Votre logement, vos comptes, vos revenus et vos décisions restent sous votre contrôle.' },
 ]
 
-export const steps = [
+export const processDetailed = [
   {
     n: '01',
-    title: 'Vous nous confiez vos biens',
-    text: 'Un bien à louer sur Airbnb, un appartement à vendre, une villa à gérer : on prend le temps de comprendre vos biens et vos priorités.',
-    image: 'https://images.unsplash.com/photo-1745847768380-2caeadbb3b71?auto=format&fit=crop&w=700&h=500&q=80',
+    title: 'Présentation',
+    text: 'Vous nous présentez votre logement ou votre activité.',
+    bullets: ['Vos plateformes', 'Votre organisation', 'Vos besoins', 'Vos difficultés', 'Votre niveau de délégation souhaité'],
   },
   {
     n: '02',
-    title: 'On branche vos canaux',
-    text: 'WhatsApp, email, Airbnb, Booking.com : tout arrive dans un seul fil, sans rien changer à vos outils actuels.',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=700&h=500&q=80',
+    title: 'Analyse',
+    text: 'Nous analysons votre fonctionnement actuel afin de déterminer ce que LARPILOTE peut réellement prendre en charge.',
   },
   {
     n: '03',
-    title: 'Vos clients ont une réponse en minutes',
-    text: 'On répond en votre nom, avec votre ton, et on ne vous transmet que ce qui demande votre décision.',
-    image: 'https://images.unsplash.com/photo-1758874383904-c3c409aeb32d?auto=format&fit=crop&w=700&h=500&q=80',
+    title: 'Configuration',
+    text: 'Nous collectons les informations nécessaires :',
+    bullets: ['Informations du logement', 'Procédures', 'Instructions voyageurs', 'Accès nécessaires', 'Contacts', 'Prestataires', 'Personnes de confiance'],
   },
+  {
+    n: '04',
+    title: 'Pilotage',
+    text: 'Une fois la configuration terminée, LARPILOTE commence à prendre en charge les tâches prévues dans votre formule.',
+  },
+  {
+    n: '05',
+    title: 'Suivi',
+    text: 'Nous suivons l’activité et vous transmettons les informations et rapports prévus.',
+  },
+]
+
+export const emergencyContacts = [
+  { icon: 'key', label: 'Serrurier' },
+  { icon: 'droplet', label: 'Plombier' },
+  { icon: 'zap', label: 'Électricien' },
+  { icon: 'sparkles', label: 'Ménage' },
+  { icon: 'shirt', label: 'Blanchisserie' },
+  { icon: 'snowflake', label: 'Climatisation' },
+  { icon: 'wrench', label: 'Maintenance' },
+  { icon: 'user', label: 'Personne de confiance' },
+]
+
+export const incidentFlow = [
+  { who: 'Voyageur', action: 'signale le problème' },
+  { who: 'LARPILOTE', action: 'analyse' },
+  { who: 'Prestataire désigné', action: 'intervient' },
+  { who: 'LARPILOTE', action: 'suit et informe' },
+  { who: 'Propriétaire', action: 'garde la décision' },
+]
+
+export const whyUs = [
+  { icon: 'distance', title: 'À distance', text: 'Pilotez votre activité même lorsque vous êtes loin de votre logement.' },
+  { icon: 'flexible', title: 'Flexible', text: 'Choisissez le niveau de gestion correspondant réellement à vos besoins.' },
+  { icon: 'transparent', title: 'Transparent', text: 'Vous savez ce qui est pris en charge et ce qui reste sous votre responsabilité.' },
+  { icon: 'performance', title: 'Orienté performance', text: 'Nous ne nous contentons pas d’exécuter. Nous cherchons également les opportunités d’amélioration.' },
 ]
 
 export const plans = [
   {
     slug: 'essentiel',
     name: 'Essentiel',
-    price: '75 000',
-    unit: 'FCFA / bien / mois',
-    desc: 'Pour un ou deux biens en location courte durée.',
+    price: '89',
+    unit: '€ / mois / logement',
+    tagline: 'La gestion voyageurs essentielle pour les propriétaires qui souhaitent gagner du temps.',
+    longTagline: 'Pour les propriétaires qui veulent principalement déléguer la communication avec les voyageurs.',
     features: [
-      'Réponse aux messages sous 30 min',
-      '1 canal (Airbnb ou WhatsApp)',
-      'Calendrier à jour',
-      'Rapport mensuel',
+      'Communication voyageurs',
+      'Questions avant réservation',
+      'Messages avant arrivée',
+      'Assistance pendant le séjour',
+      'Messages de départ',
+      'Suivi des réservations',
+      'Modifications et annulations',
+      'Réponse aux avis',
+      'Réception et suivi des signalements',
     ],
+    limit: 'Jusqu’à 10 réservations / mois',
+    cta: 'Choisir Essentiel',
+    audience: 'proprietaire',
     featured: false,
   },
   {
-    slug: 'pro',
-    name: 'Pro',
-    price: '180 000',
-    unit: 'FCFA / mois',
-    desc: 'Jusqu’à 6 biens, location et vente mélangées.',
+    slug: 'business',
+    name: 'Business',
+    badge: 'Populaire',
+    price: '149',
+    unit: '€ / mois / logement',
+    tagline: 'Notre formule de gestion virtuelle complète pour piloter votre activité au quotidien.',
+    longTagline: 'Notre formule principale de gestion virtuelle.',
+    featuresIntro: 'Tout ce qui est inclus dans Essentiel, plus :',
     features: [
-      'Réponse sous 10 min, 7j/7',
-      'Tous les canaux connectés',
-      'Qualification des acheteurs',
-      'Rédaction des annonces incluse',
-      'Rapport détaillé + appel mensuel',
+      'Airbnb',
+      'Booking',
+      'Gestion multicanal',
+      'Synchronisation des calendriers',
+      'Optimisation des annonces',
+      'Suivi des performances',
+      'Recommandations tarifaires',
+      'Coordination des prestataires désignés',
+      'Rapport mensuel',
     ],
+    limit: 'Jusqu’à 20 réservations / mois',
+    cta: 'Choisir Business',
+    audience: 'proprietaire',
     featured: true,
   },
   {
-    slug: 'sur-mesure',
-    name: 'Sur-mesure',
-    price: 'À discuter',
-    unit: 'portefeuille de biens',
-    desc: 'Agences et propriétaires avec un portefeuille large.',
+    slug: 'performance',
+    name: 'Performance',
+    price: '10 % des revenus générés',
+    unit: 'Minimum mensuel : 49 €',
+    tagline: 'Une formule conçue pour les propriétaires qui souhaitent renforcer le pilotage et l’optimisation de leur activité.',
+    longTagline: 'Pour les propriétaires qui souhaitent renforcer le pilotage et l’optimisation de leur activité.',
+    featuresIntro: 'Tout ce qui est inclus dans Business, plus :',
     features: [
-      'Équipe dédiée',
-      'Astreinte téléphonique',
-      'Intégration à vos outils internes',
-      'Reporting personnalisé',
+      'Optimisation continue',
+      'Analyse commerciale',
+      'Analyse des périodes creuses',
+      'Recommandations stratégiques',
+      'Suivi renforcé des performances',
+      'Coordination renforcée des incidents',
+      'Reporting avancé',
     ],
+    disclaimer: 'La formule Performance vise à optimiser le pilotage de votre activité. Elle ne constitue pas une garantie de taux d’occupation, de réservation ou de chiffre d’affaires.',
+    cta: 'Parler à LARPILOTE',
+    audience: 'proprietaire',
+    featured: false,
+  },
+  {
+    slug: 'relais',
+    name: 'Relais',
+    price: 'À partir de 299',
+    unit: '€ / mois',
+    tagline: 'Le back-office à distance des conciergeries qui souhaitent développer leur activité sans alourdir leur structure.',
+    longTagline: 'Le back-office à distance pour les conciergeries.',
+    features: [
+      'Communication voyageurs',
+      'Réservations',
+      'Gestion multicanal',
+      'Annonces',
+      'Reporting',
+      'Suivi administratif',
+      'Coordination des demandes',
+      'Gestion des incidents',
+    ],
+    note: 'Tarification adaptée au nombre de logements et au volume de travail.',
+    badge: 'Marque blanche possible',
+    cta: 'Demander une proposition',
+    audience: 'conciergerie',
     featured: false,
   },
 ]
 
-export const testimonials = [
+export const faqItems = [
+  { q: 'LARPILOTE est-elle une conciergerie ?', a: 'Non. LARPILOTE est un service de gestion virtuelle et de pilotage à distance. Nous ne remplaçons pas nécessairement les équipes physiques qui s’occupent du logement.' },
+  { q: 'Qui s’occupe du ménage ?', a: 'Le propriétaire ou la conciergerie conserve ses équipes de ménage. LARPILOTE peut coordonner à distance les personnes que vous avez désignées selon votre formule.' },
+  { q: 'LARPILOTE possède-t-elle les clés ?', a: 'Non. LARPILOTE n’a pas vocation à assurer la gestion physique du logement.' },
+  { q: 'Que se passe-t-il en cas de problème ?', a: 'Le voyageur signale le problème à LARPILOTE. Nous analysons la situation et contactons la personne ou le prestataire que vous avez désigné, selon vos consignes.' },
+  { q: 'Qui paie les réparations ?', a: 'Les coûts des interventions, réparations et prestations restent à la charge du propriétaire, de la conciergerie ou du responsable concerné.' },
+  { q: 'Puis-je conserver mon compte Airbnb ?', a: 'Oui. Vous conservez la propriété de vos comptes et de vos revenus. LARPILOTE intervient dans le cadre des accès et autorisations que vous lui accordez.' },
+  { q: 'LARPILOTE travaille-t-elle uniquement avec Airbnb ?', a: 'Non. Selon votre formule et votre organisation, nous pouvons travailler avec Airbnb, Booking et d’autres plateformes compatibles.' },
+  { q: 'LARPILOTE garantit-elle un nombre de réservations ?', a: 'Non. Nous pouvons analyser, optimiser et piloter votre activité, mais aucune formule ne garantit un taux d’occupation, un nombre de réservations ou un chiffre d’affaires.' },
+  { q: 'Puis-je changer de formule ?', a: 'Oui, sous réserve des conditions prévues dans votre contrat.' },
+  { q: 'Est-ce que LARPILOTE travaille avec les conciergeries ?', a: 'Oui. Notre offre RELAIS est spécialement conçue pour les conciergeries qui souhaitent externaliser une partie de leur back-office.' },
+  { q: 'LARPILOTE peut-elle travailler en marque blanche ?', a: 'Oui. La formule RELAIS peut être proposée en marque blanche afin que la conciergerie conserve sa relation client et son identité.' },
+  { q: 'Dois-je être présent dans le même pays que mon logement ?', a: 'Non. Le principe de LARPILOTE est justement de permettre le pilotage à distance. La présence physique nécessaire au logement reste assurée par les personnes ou prestataires désignés localement.' },
+]
+
+export const navGroups = [
   {
-    quote: 'Avant, je répondais à mes voyageurs entre deux réunions. Aujourd’hui, mes trois appartements de Ngor et Saly tournent sans que je touche à mon téléphone.',
-    name: 'Aïda Fall',
-    role: 'Propriétaire, Dakar',
-    avatar: 'https://images.unsplash.com/photo-1568254684102-4b54479a7471?auto=format&fit=crop&w=150&h=150&q=80',
+    label: 'Solutions',
+    items: [
+      { label: 'Propriétaires', to: '/proprietaires', text: 'Déléguez la gestion de votre logement.' },
+      { label: 'Conciergeries', to: '/conciergeries', text: 'Externalisez votre back-office.' },
+    ],
   },
+  { label: 'Nos services', to: '/services' },
+  { label: 'Nos forfaits', to: '/forfaits' },
   {
-    quote: 'On a vendu la villa de Popenguine en cinq semaines. Chaque visiteur sérieux était déjà qualifié avant même que je le rencontre.',
-    name: 'Ibrahima Ndao',
-    role: 'Vendeur, Popenguine',
-    avatar: 'https://images.unsplash.com/photo-1514278033938-06f80809a42c?auto=format&fit=crop&w=150&h=150&q=80',
-  },
-  {
-    quote: 'Le reporting mensuel m’a permis de repérer que mes prix étaient trop bas le week-end. Un ajustement simple, un revenu en plus.',
-    name: 'Sophie Renard',
-    role: 'Propriétaire, Almadies',
-    avatar: 'https://images.unsplash.com/photo-1542226601-bc82e276ae0a?auto=format&fit=crop&w=150&h=150&q=80',
+    label: 'Ressources',
+    items: [
+      { label: 'Comment ça marche', to: '/comment-ca-marche', text: 'Le fonctionnement, étape par étape.' },
+      { label: 'FAQ', to: '/faq', text: 'Les réponses aux questions fréquentes.' },
+      { label: 'À propos', to: '/a-propos', text: 'Notre mission et notre vision.' },
+    ],
   },
 ]
 
-export const faq = [
+export const footerColumns = [
   {
-    q: 'Est-ce que je garde le contrôle de mes annonces ?',
-    a: 'Oui. Vous restez propriétaire de vos comptes Airbnb, Booking.com et de vos annonces. Larpilote agit en votre nom mais ne remplace jamais vos comptes.',
+    title: 'Propriétaires',
+    links: [
+      { label: 'Nos services', to: '/services' },
+      { label: 'Nos forfaits', to: '/forfaits' },
+      { label: 'Comment ça marche', to: '/comment-ca-marche' },
+      { label: 'FAQ', to: '/faq' },
+      { label: 'Contact', to: '/contact' },
+    ],
   },
   {
-    q: 'Que se passe-t-il si un message demande ma décision ?',
-    a: 'On vous transmet uniquement ce qui compte : une négociation, une demande particulière, un imprévu. Le reste est traité directement.',
+    title: 'Conciergeries',
+    links: [
+      { label: 'LARPILOTE RELAIS', to: '/conciergeries' },
+      { label: 'Nos services', to: '/services' },
+      { label: 'Comment ça marche', to: '/comment-ca-marche' },
+      { label: 'FAQ', to: '/faq' },
+      { label: 'Contact', to: '/contact' },
+    ],
   },
   {
-    q: 'Puis-je changer de formule en cours de route ?',
-    a: 'Oui, à tout moment. Beaucoup de propriétaires commencent en Essentiel puis passent en Pro quand ils ajoutent des biens.',
+    title: 'LARPILOTE',
+    links: [
+      { label: 'À propos', to: '/a-propos' },
+      { label: 'Nos valeurs', to: '/a-propos' },
+      { label: 'Contact', to: '/contact' },
+    ],
   },
   {
-    q: 'Travaillez-vous avec des agences, pas seulement des particuliers ?',
-    a: 'Oui, la formule Sur-mesure est pensée pour les agences et les portefeuilles de plusieurs dizaines de biens.',
+    title: 'Informations',
+    links: [
+      { label: 'Mentions légales', to: '/mentions-legales' },
+      { label: 'Politique de confidentialité', to: '/confidentialite' },
+      { label: 'CGV', to: '/cgv' },
+      { label: 'Gestion des cookies', to: '/cookies' },
+    ],
   },
 ]
+
+// --- Questionnaire (rule-based, no AI) ---
+
+export const quizQuestions = [
+  {
+    id: 'profile',
+    question: 'Vous êtes :',
+    type: 'single',
+    options: ['Propriétaire', 'Conciergerie'],
+  },
+  {
+    id: 'volume',
+    question: 'Combien de logements gérez-vous ?',
+    type: 'single',
+    options: ['1', '2–5', '6–10', '10+'],
+  },
+  {
+    id: 'monthlyBookings',
+    question: 'Quel est votre volume mensuel de réservations ?',
+    type: 'single',
+    options: ['1–5', '6–15', '16–30', '30+'],
+  },
+  {
+    id: 'platforms',
+    question: 'Quelles plateformes utilisez-vous ?',
+    type: 'multi',
+    options: ['Airbnb', 'Booking', 'Autres'],
+  },
+  {
+    id: 'problem',
+    question: 'Quel est votre principal problème ?',
+    type: 'single',
+    options: ['Messages voyageurs', 'Réservations', 'Optimisation', 'Manque de temps', 'Gestion de plusieurs logements', 'Autre'],
+  },
+  {
+    id: 'needsOptimization',
+    question: 'Avez-vous besoin d’optimisation de vos annonces et de vos tarifs ?',
+    type: 'single',
+    options: ['Oui', 'Non'],
+  },
+  {
+    id: 'needsCoordination',
+    question: 'Avez-vous besoin de coordination des prestataires en cas d’incident ?',
+    type: 'single',
+    options: ['Oui', 'Non'],
+  },
+  {
+    id: 'location',
+    question: 'Où se situe votre logement ?',
+    type: 'text',
+    placeholder: 'Ville, pays',
+  },
+  {
+    id: 'delegation',
+    question: 'Quel niveau de délégation recherchez-vous ?',
+    type: 'single',
+    options: ['Communication uniquement', 'Gestion digitale complète', 'Pilotage et optimisation', 'Back-office pour ma conciergerie'],
+  },
+]
+
+export function recommendPlan(answers) {
+  if (answers.profile === 'Conciergerie' || answers.delegation === 'Back-office pour ma conciergerie') {
+    return 'relais'
+  }
+  if (answers.delegation === 'Pilotage et optimisation') return 'performance'
+  if (answers.delegation === 'Gestion digitale complète') return 'business'
+  if (answers.delegation === 'Communication uniquement') return 'essentiel'
+  return 'business'
+}
+
+export const contactPlatforms = ['Airbnb', 'Booking', 'Autres']
+export const contactDelegation = ['Communication voyageurs', 'Réservations', 'Gestion multicanal', 'Optimisation', 'Reporting', 'Coordination', 'Back-office', 'Autre']

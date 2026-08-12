@@ -4,21 +4,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#142430',
-        marine: {
-          DEFAULT: '#1F6B72',
-          dark: '#154D53',
-          light: '#3C8A91',
+        noir: {
+          DEFAULT: '#111111',
+          soft: '#1B1B1B',
         },
-        sand: '#EFE7D8',
-        paper: '#FAF7F1',
-        ochre: '#C98A2C',
-        ember: '#B4502F',
+        paper: '#F4F0E8',
+        beige: {
+          DEFAULT: '#EAE2CF',
+          dark: '#DED0AE',
+        },
+        gold: {
+          DEFAULT: '#B89A5A',
+          light: '#CBB27E',
+          dark: '#96793F',
+        },
+        sauge: {
+          DEFAULT: '#7E946C',
+          light: '#9BAE8B',
+        },
+        stone: '#666666',
       },
       fontFamily: {
         display: ['"Fraunces"', 'serif'],
         body: ['"Inter"', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'monospace'],
+      },
+      maxWidth: {
+        page: '76rem',
       },
     },
   },
