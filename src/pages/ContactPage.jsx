@@ -3,6 +3,8 @@ import { Icon, WhatsAppIcon } from '../lib/icons'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
 import ContactForm from '../components/ContactForm'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 import { plans, whatsappLink } from '../data'
 
 export default function ContactPage() {
@@ -23,6 +25,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <SEO {...seoData['/contact']} path="/contact" />
       <PageHero
         image="/images/hero-contact.jpg"
         minHeight={false}

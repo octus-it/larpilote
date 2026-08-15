@@ -2,11 +2,14 @@ import Button from '../components/ui/Button'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
 import Accordion from '../components/ui/Accordion'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 import { faqItems } from '../data'
 
 export default function FAQPage() {
   return (
     <>
+      <SEO {...seoData['/faq']} path="/faq" />
       <PageHero kicker="FAQ" title="Questions fréquentes" />
 
       <Section>

@@ -2,11 +2,14 @@ import { Icon } from '../lib/icons'
 import Reveal from '../components/Reveal'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 import { servicesDetailed } from '../data'
 
 export default function ServicesPage() {
   return (
     <>
+      <SEO {...seoData['/services']} path="/services" />
       <PageHero
         image="/images/hero-services.jpg"
         minHeight={false}

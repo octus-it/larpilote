@@ -2,11 +2,14 @@ import { Icon } from '../lib/icons'
 import Reveal from '../components/Reveal'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 import { processDetailed, emergencyContacts } from '../data'
 
 export default function HowItWorksPage() {
   return (
     <>
+      <SEO {...seoData['/comment-ca-marche']} path="/comment-ca-marche" />
       <PageHero
         image="/images/hero-comment-ca-marche.jpg"
         minHeight={false}

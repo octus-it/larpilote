@@ -4,6 +4,8 @@ import Button from '../components/ui/Button'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
 import Reveal from '../components/Reveal'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 import { quizQuestions, recommendPlan, plans } from '../data'
 
 const initialAnswers = {
@@ -57,6 +59,7 @@ export default function Quiz() {
 
   return (
     <>
+      <SEO {...seoData['/trouver-ma-formule']} path="/trouver-ma-formule" />
       <PageHero
         kicker="Trouver ma formule"
         title="Quelques questions pour cerner votre besoin."

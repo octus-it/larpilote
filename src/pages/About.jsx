@@ -1,12 +1,15 @@
 import Reveal from '../components/Reveal'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 
 const combine = ['Technologie', 'Organisation', 'Communication', 'Pilotage humain']
 
 export default function About() {
   return (
     <>
+      <SEO {...seoData['/a-propos']} path="/a-propos" />
       <PageHero
         image="/images/hero-a-propos.jpg"
         minHeight={false}

@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -14,9 +15,22 @@ import About from './pages/About'
 import Quiz from './pages/Quiz'
 import LegalPage from './pages/LegalPage'
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'LARPILOTE',
+  url: 'https://larpilote.com',
+  logo: 'https://larpilote.com/images/logo-mark.png',
+  description: 'Gestion virtuelle et pilotage opérationnel à distance des locations courte durée pour propriétaires et conciergeries.',
+  areaServed: 'Worldwide',
+}
+
 export default function App() {
   return (
     <div className="min-h-screen bg-paper text-noir font-body">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+      </Helmet>
       <ScrollToTop />
       <Nav />
       <Routes>
@@ -30,10 +44,10 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/a-propos" element={<About />} />
         <Route path="/trouver-ma-formule" element={<Quiz />} />
-        <Route path="/mentions-legales" element={<LegalPage slug="mentions" />} />
-        <Route path="/confidentialite" element={<LegalPage slug="confidentialite" />} />
-        <Route path="/cgv" element={<LegalPage slug="cgv" />} />
-        <Route path="/cookies" element={<LegalPage slug="cookies" />} />
+        <Route path="/mentions-legales" element={<LegalPage slug="mentions" path="/mentions-legales" />} />
+        <Route path="/confidentialite" element={<LegalPage slug="confidentialite" path="/confidentialite" />} />
+        <Route path="/cgv" element={<LegalPage slug="cgv" path="/cgv" />} />
+        <Route path="/cookies" element={<LegalPage slug="cookies" path="/cookies" />} />
       </Routes>
       <Footer />
       <WhatsAppButton />

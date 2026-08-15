@@ -1,13 +1,16 @@
 import Reveal from '../components/Reveal'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 import { legalPages } from '../legalContent'
 
-export default function LegalPage({ slug }) {
+export default function LegalPage({ slug, path }) {
   const page = legalPages[slug]
 
   return (
     <>
+      <SEO {...seoData[path]} path={path} />
       <PageHero kicker="Informations" title={page.title} subtitle={page.updated} />
       <Section>
         <div className="max-w-2xl space-y-12">

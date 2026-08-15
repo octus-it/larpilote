@@ -9,6 +9,8 @@ import PricingCard from '../components/ui/PricingCard'
 import GlowBackground from '../components/ui/GlowBackground'
 import HeroHome, { HeroCTA } from '../components/HeroHome'
 import PlanModal from '../components/PlanModal'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 import {
   painPoints,
   solutionFlow,
@@ -47,6 +49,7 @@ export default function Home() {
 
   return (
     <>
+      <SEO {...seoData['/']} path="/" />
       <HeroHome
         image="/images/hero-home.jpg"
         kicker="Larpilote"

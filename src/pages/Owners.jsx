@@ -3,6 +3,8 @@ import Reveal from '../components/Reveal'
 import Button from '../components/ui/Button'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 import { plans, whatsappLink } from '../data'
 
 const tasks = [
@@ -34,6 +36,7 @@ const ownerPlans = plans.filter((p) => p.slug !== 'relais')
 export default function Owners() {
   return (
     <>
+      <SEO {...seoData['/proprietaires']} path="/proprietaires" />
       <PageHero
         image="/images/hero-proprietaires.jpg"
         kicker="Propriétaires"

@@ -17,6 +17,8 @@ export default function Modal({ open, onClose, children, labelledBy }) {
     }
   }, [open, onClose])
 
+  if (typeof document === 'undefined') return null
+
   return createPortal(
     <AnimatePresence>
       {open && (

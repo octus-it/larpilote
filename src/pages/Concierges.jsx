@@ -3,6 +3,8 @@ import Reveal from '../components/Reveal'
 import Button from '../components/ui/Button'
 import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
+import SEO from '../components/SEO'
+import { seoData } from '../seoData'
 
 const keep = ['Vos clients.', 'Votre marque.', 'Vos équipes terrain.']
 
@@ -21,6 +23,7 @@ const flow = ['reçoit', 'analyse', 'contacte', 'coordonne', 'suit', 'informe']
 export default function Concierges() {
   return (
     <>
+      <SEO {...seoData['/conciergeries']} path="/conciergeries" />
       <PageHero
         image="/images/hero-conciergeries.jpg"
         kicker="Conciergeries"
