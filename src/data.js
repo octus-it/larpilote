@@ -257,6 +257,7 @@ export const plans = [
     cta: 'Parler à Larpilote',
     audience: 'conciergerie',
     featured: false,
+    paypalPlanId: 'P-24A49682FP5752126NKAKOCQ',
   },
 ]
 
