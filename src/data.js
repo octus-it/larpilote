@@ -181,7 +181,7 @@ export const plans = [
     slug: 'business',
     name: 'Business',
     badge: 'Populaire',
-    price: '179',
+    price: '189',
     unit: '$US / mois / logement',
     tagline: 'Pour les propriétaires qui souhaitent déléguer leur gestion quotidienne tout en améliorant les performances de leur logement.',
     longTagline: 'Pour les propriétaires qui souhaitent déléguer leur gestion quotidienne tout en améliorant les performances de leur logement.',
