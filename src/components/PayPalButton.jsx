@@ -23,11 +23,13 @@ function loadPaypalSdk() {
   })
 }
 
-export default function PayPalButton({ planId, onApprove }) {
+export default function PayPalButton({ planId, onApprove, createSubscription }) {
   const containerRef = useRef(null)
   const buttonsRef = useRef(null)
   const onApproveRef = useRef(onApprove)
   onApproveRef.current = onApprove
+  const createSubscriptionRef = useRef(createSubscription)
+  createSubscriptionRef.current = createSubscription
   const [failed, setFailed] = useState(false)
 
   useEffect(() => {
@@ -39,7 +41,10 @@ export default function PayPalButton({ planId, onApprove }) {
         if (cancelled || !containerRef.current) return
         buttonsRef.current = paypal.Buttons({
           style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
-          createSubscription: (data, actions) => actions.subscription.create({ plan_id: planId }),
+          createSubscription: (data, actions) =>
+            createSubscriptionRef.current
+              ? createSubscriptionRef.current(data, actions)
+              : actions.subscription.create({ plan_id: planId }),
           onApprove: (data) => onApproveRef.current(data.subscriptionID),
         })
         buttonsRef.current.render(containerRef.current)

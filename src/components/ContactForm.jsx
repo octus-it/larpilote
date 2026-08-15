@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Icon } from '../lib/icons'
 import Button from './ui/Button'
+import PayPalButton from './PayPalButton'
 import { contactPlatforms, contactDelegation } from '../data'
 
 const emptyForm = {
@@ -22,6 +23,8 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
     message: plan ? `Je souhaite en savoir plus sur la formule ${plan.name}.` : '',
   }))
   const [sent, setSent] = useState(false)
+  const formRef = useRef(null)
+  const paypalPlanId = plan?.paypalPlanId
 
   const toggle = (key, value) => {
     setForm((f) => ({
@@ -36,20 +39,31 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
     onSent?.()
   }
 
+  // The subscription is only created once the visitor has filled in every
+  // required field — payment finalizes the request, it doesn't gate filling it.
+  const createSubscription = (data, actions) => {
+    if (!formRef.current.reportValidity()) {
+      return Promise.reject(new Error('form-incomplete'))
+    }
+    return actions.subscription.create({ plan_id: paypalPlanId })
+  }
+
   if (sent) {
     return (
       <div className="border border-noir/15 p-10 text-center">
         <Icon name="check" className="w-8 h-8 mx-auto text-gold" strokeWidth={1.5} />
         <p className="mt-5 font-display text-2xl">Merci.</p>
         <p className="mt-3 opacity-70 max-w-sm mx-auto">
-          Votre demande a bien été reçue. L’équipe LARPILOTE reviendra vers vous rapidement.
+          {paypalPlanId
+            ? 'Votre paiement a bien été confirmé et votre demande transmise. L’équipe LARPILOTE reviendra vers vous rapidement.'
+            : 'Votre demande a bien été reçue. L’équipe LARPILOTE reviendra vers vous rapidement.'}
         </p>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
       {plan && (
         <p className="text-sm border border-gold/40 text-gold-dark px-4 py-3">
           Concernant l’offre <strong>{plan.name}</strong>
@@ -146,9 +160,26 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
         />
       </Field>
 
-      <Button type="submit" variant="dark" className="w-full sm:w-auto" withArrow>
-        Envoyer ma demande
-      </Button>
+      {paypalPlanId ? (
+        <div>
+          <p className="mb-4 text-sm border border-gold/40 text-gold-dark px-4 py-3 leading-relaxed">
+            L’abonnement se règle à l’envoi de la demande. Le paiement finalise votre inscription
+            à la formule {plan.name}.
+          </p>
+          <PayPalButton
+            planId={paypalPlanId}
+            createSubscription={createSubscription}
+            onApprove={() => {
+              setSent(true)
+              onSent?.()
+            }}
+          />
+        </div>
+      ) : (
+        <Button type="submit" variant="dark" className="w-full sm:w-auto" withArrow>
+          Envoyer ma demande
+        </Button>
+      )}
 
       <style>{`
         .input {
