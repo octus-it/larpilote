@@ -39,14 +39,14 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
     onSent?.()
   }
 
-  // The subscription is only created once the visitor has filled in every
-  // required field — payment finalizes the request, it doesn't gate filling it.
-  const createSubscription = (data, actions) => {
-    if (!formRef.current.reportValidity()) {
-      return Promise.reject(new Error('form-incomplete'))
-    }
-    return actions.subscription.create({ plan_id: paypalPlanId, quantity: 1 })
-  }
+  // Validated on click, before the PayPal popup opens: reject() cleanly cancels
+  // the flow (native "please fill this field" hints via reportValidity), rather
+  // than failing mid-flow inside createSubscription.
+  const handlePaypalClick = (data, actions) =>
+    formRef.current.reportValidity() ? actions.resolve() : actions.reject()
+
+  const createSubscription = (data, actions) =>
+    actions.subscription.create({ plan_id: paypalPlanId, quantity: 1 })
 
   if (sent) {
     return (
@@ -168,6 +168,7 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
           </p>
           <PayPalButton
             planId={paypalPlanId}
+            onClick={handlePaypalClick}
             createSubscription={createSubscription}
             onApprove={() => {
               setSent(true)

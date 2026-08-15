@@ -23,13 +23,15 @@ function loadPaypalSdk() {
   })
 }
 
-export default function PayPalButton({ planId, onApprove, createSubscription }) {
+export default function PayPalButton({ planId, onApprove, createSubscription, onClick }) {
   const containerRef = useRef(null)
   const buttonsRef = useRef(null)
   const onApproveRef = useRef(onApprove)
   onApproveRef.current = onApprove
   const createSubscriptionRef = useRef(createSubscription)
   createSubscriptionRef.current = createSubscription
+  const onClickRef = useRef(onClick)
+  onClickRef.current = onClick
   const [failed, setFailed] = useState(false)
 
   useEffect(() => {
@@ -41,6 +43,12 @@ export default function PayPalButton({ planId, onApprove, createSubscription }) 
         if (cancelled || !containerRef.current) return
         buttonsRef.current = paypal.Buttons({
           style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
+          // Validation belongs here, not in createSubscription: onClick can cleanly
+          // cancel the flow with actions.reject() before the popup opens, whereas
+          // rejecting createSubscription's promise surfaces as an uncaught error
+          // in PayPal's own SDK console output.
+          onClick: (data, actions) =>
+            onClickRef.current ? onClickRef.current(data, actions) : actions.resolve(),
           createSubscription: (data, actions) =>
             createSubscriptionRef.current
               ? createSubscriptionRef.current(data, actions)
