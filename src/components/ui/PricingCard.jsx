@@ -3,8 +3,7 @@ import { Icon } from '../../lib/icons'
 import Button from './Button'
 import Reveal from '../Reveal'
 
-export default function PricingCard({ plan, variant = 'full', delay = 0 }) {
-  const ctaTo = `/contact?forfait=${plan.slug}`
+export default function PricingCard({ plan, delay = 0, onSelect }) {
   const isSimplePrice = /^[0-9][0-9\s]*$/.test(plan.price)
 
   return (
@@ -30,30 +29,26 @@ export default function PricingCard({ plan, variant = 'full', delay = 0 }) {
         {!isSimplePrice && <p className="mt-1 text-sm opacity-60 font-mono">{plan.unit}</p>}
 
         <p className={`mt-5 text-sm leading-relaxed ${plan.featured ? 'opacity-80' : 'opacity-70'}`}>
-          {variant === 'full' ? plan.longTagline : plan.tagline}
+          {plan.longTagline}
         </p>
 
-        {variant === 'full' && (
-          <>
-            {plan.featuresIntro && (
-              <p className="mt-7 text-xs font-mono uppercase tracking-wide opacity-60">{plan.featuresIntro}</p>
-            )}
-            <ul className={`mt-4 space-y-2.5 text-sm ${!plan.featuresIntro ? 'mt-7' : ''}`}>
-              {plan.features.map((f) => (
-                <li key={f} className="flex items-start gap-2.5">
-                  <Icon name="check" className={`w-4 h-4 mt-0.5 shrink-0 ${plan.featured ? 'text-gold-light' : 'text-gold'}`} strokeWidth={1.5} />
-                  <span className="opacity-90">{f}</span>
-                </li>
-              ))}
-            </ul>
-            {plan.limit && <p className="mt-6 text-xs font-mono opacity-60">{plan.limit}</p>}
-            {plan.note && <p className="mt-6 text-xs opacity-60 leading-relaxed">{plan.note}</p>}
-            {plan.disclaimer && <p className="mt-6 text-xs opacity-50 leading-relaxed italic">{plan.disclaimer}</p>}
-          </>
+        {plan.featuresIntro && (
+          <p className="mt-7 text-xs font-mono uppercase tracking-wide opacity-60">{plan.featuresIntro}</p>
         )}
+        <ul className={`mt-4 space-y-2.5 text-sm ${!plan.featuresIntro ? 'mt-7' : ''}`}>
+          {plan.features.map((f) => (
+            <li key={f} className="flex items-start gap-2.5">
+              <Icon name="check" className={`w-4 h-4 mt-0.5 shrink-0 ${plan.featured ? 'text-gold-light' : 'text-gold'}`} strokeWidth={1.5} />
+              <span className="opacity-90">{f}</span>
+            </li>
+          ))}
+        </ul>
+        {plan.limit && <p className="mt-6 text-xs font-mono opacity-60">{plan.limit}</p>}
+        {plan.note && <p className="mt-6 text-xs opacity-60 leading-relaxed">{plan.note}</p>}
+        {plan.disclaimer && <p className="mt-6 text-xs opacity-50 leading-relaxed italic">{plan.disclaimer}</p>}
 
         <div className="mt-auto pt-8">
-          <Button to={ctaTo} variant={plan.featured ? 'light' : 'outline'} className="w-full" withArrow>
+          <Button onClick={() => onSelect(plan)} variant={plan.featured ? 'light' : 'outline'} className="w-full" withArrow>
             {plan.cta}
           </Button>
         </div>

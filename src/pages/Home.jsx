@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Icon } from '../lib/icons'
 import Reveal from '../components/Reveal'
@@ -7,6 +8,7 @@ import Flow from '../components/ui/Flow'
 import PricingCard from '../components/ui/PricingCard'
 import GlowBackground from '../components/ui/GlowBackground'
 import HeroHome, { HeroCTA } from '../components/HeroHome'
+import PlanModal from '../components/PlanModal'
 import {
   painPoints,
   solutionFlow,
@@ -41,6 +43,8 @@ function HoverCard({ icon, title, text, delay = 0 }) {
 }
 
 export default function Home() {
+  const [selectedPlan, setSelectedPlan] = useState(null)
+
   return (
     <>
       <HeroHome
@@ -196,9 +200,9 @@ export default function Home() {
       </Section>
 
       <Section tone="beige" id="tarifs" kicker="Nos forfaits" title="Nos forfaits">
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {plans.map((p, i) => (
-            <PricingCard key={p.slug} plan={p} variant="compact" delay={i * 0.06} />
+            <PricingCard key={p.slug} plan={p} delay={i * 0.06} onSelect={setSelectedPlan} />
           ))}
         </div>
         <Reveal className="mt-14 text-center">
@@ -259,6 +263,8 @@ export default function Home() {
           <Button to="/contact" variant="dark" withArrow>Parler à LARPILOTE</Button>
         </Reveal>
       </Section>
+
+      <PlanModal plan={selectedPlan} onClose={() => setSelectedPlan(null)} />
     </>
   )
 }

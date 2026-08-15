@@ -157,8 +157,8 @@ export const plans = [
   {
     slug: 'essentiel',
     name: 'Essentiel',
-    price: '89',
-    unit: '€ / mois / logement',
+    price: '109',
+    unit: '$ / mois / logement',
     tagline: 'La gestion voyageurs essentielle pour les propriétaires qui souhaitent gagner du temps.',
     longTagline: 'Pour les propriétaires qui veulent principalement déléguer la communication avec les voyageurs.',
     features: [
