@@ -240,6 +240,7 @@ export const plans = [
     cta: 'Choisir cette formule',
     audience: 'proprietaire',
     featured: true,
+    paypalPlanId: 'P-3UT034482S7209358NKAKGOA',
   },
   {
     slug: 'relais',
