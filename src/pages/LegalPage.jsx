@@ -28,6 +28,10 @@ export default function LegalPage({ slug, path }) {
                         </li>
                       ))}
                     </ul>
+                  ) : block.type === 'sub' ? (
+                    <p key={i} className="font-display text-base md:text-lg pt-2">
+                      {block.text}
+                    </p>
                   ) : (
                     <p key={i} className="text-sm md:text-base opacity-75 leading-relaxed">
                       {block.text}

@@ -1,86 +1,165 @@
 export const legalPages = {
   mentions: {
     title: 'Mentions légales',
-    updated: 'Dernière mise à jour : 12 août 2026',
+    updated: 'Dernière mise à jour : 15 août 2026',
     sections: [
       {
         heading: '1. Éditeur du site',
         blocks: [
-          { type: 'p', text: 'Le site larpilote.com (le « Site ») est édité par :' },
           {
-            type: 'ul',
-            items: [
-              '[Raison sociale / forme juridique à compléter], au capital de [montant] [devise]',
-              'Immatriculée sous le numéro [RCCM / SIRET] au [registre du commerce compétent]',
-              'Siège social : [adresse complète à compléter]',
-              'Numéro de TVA intracommunautaire (le cas échéant) : [à compléter]',
-              'Directeur de la publication : [Nom et prénom]',
-              'Contact : support@larpilote.com',
-            ],
+            type: 'p',
+            text: 'Le site larpilote.com est exploité sous le nom LARPILOTE, dans le cadre d’une activité de prestation de services à distance.',
           },
+          {
+            type: 'p',
+            text: 'LARPILOTE propose des services de gestion virtuelle et de pilotage opérationnel des locations courte durée, destinés principalement aux propriétaires de logements et aux conciergeries.',
+          },
+          {
+            type: 'p',
+            text: 'L’activité est exercée principalement à distance et en ligne. LARPILOTE ne reçoit pas sa clientèle dans un local commercial ouvert au public.',
+          },
+          { type: 'p', text: 'E-mail : contact@larpilote.com' },
+          { type: 'p', text: 'Support : support@larpilote.com' },
+          { type: 'p', text: 'Téléphone : [numéro à renseigner]' },
+          { type: 'p', text: 'Adresse professionnelle : [adresse à renseigner]' },
+          {
+            type: 'p',
+            text: 'Pour toute demande concernant les informations administratives ou juridiques de l’activité LARPILOTE, vous pouvez contacter notre support :',
+          },
+          { type: 'p', text: 'support@larpilote.com' },
         ],
       },
       {
-        heading: '2. Hébergement',
+        heading: '2. Hébergement du site',
         blocks: [
+          { type: 'p', text: 'Le site larpilote.com est hébergé par :' },
           {
-            type: 'p',
-            text: 'Le Site est hébergé par [nom de l’hébergeur à compléter], [adresse de l’hébergeur], [contact ou site web de l’hébergeur].',
+            type: 'ul',
+            items: ['[Nom de l’hébergeur]', '[Coordonnées de l’hébergeur à renseigner]'],
           },
         ],
       },
       {
         heading: '3. Activité',
         blocks: [
+          { type: 'p', text: 'LARPILOTE est un service de prestation de gestion virtuelle et de pilotage à distance.' },
+          { type: 'p', text: 'Selon la formule choisie, LARPILOTE peut notamment assurer :' },
+          {
+            type: 'ul',
+            items: [
+              'la communication avec les voyageurs',
+              'le suivi des réservations',
+              'les modifications et annulations',
+              'le suivi des signalements',
+              'la réponse aux avis',
+              'la gestion multicanale',
+              'l’optimisation des annonces',
+              'l’accompagnement tarifaire',
+              'le suivi des performances',
+              'la coordination à distance avec les équipes ou prestataires locaux',
+            ],
+          },
           {
             type: 'p',
-            text: 'LARPILOTE propose un service de gestion virtuelle et de pilotage opérationnel à distance des locations courte durée, destiné aux propriétaires de logements et aux conciergeries. LARPILOTE n’est pas une conciergerie physique traditionnelle : le Site et les services associés ne donnent lieu à aucune intervention physique sur les logements concernés, celle-ci restant assurée par le propriétaire, la conciergerie ou les prestataires locaux qu’ils désignent.',
+            text: 'LARPILOTE n’assure pas directement les prestations nécessitant une présence physique dans les logements.',
+          },
+          {
+            type: 'p',
+            text: 'Le ménage, l’accueil physique, les déplacements, la maintenance, les réparations et autres interventions sur place restent à la charge du propriétaire, de la conciergerie ou des prestataires désignés.',
           },
         ],
       },
       {
-        heading: '4. Propriété intellectuelle',
+        heading: '4. Paiement',
         blocks: [
           {
             type: 'p',
-            text: 'L’ensemble des éléments du Site (textes, structure, mise en page, identité visuelle, logo et monogramme LP, marque LARPILOTE) est protégé par le droit de la propriété intellectuelle. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable de LARPILOTE, est interdite.',
+            text: 'Les abonnements LARPILOTE peuvent être réglés en ligne au moyen des solutions de paiement proposées sur le Site, notamment PayPal.',
+          },
+          {
+            type: 'p',
+            text: 'Les informations bancaires nécessaires au paiement sont traitées par le prestataire de paiement concerné.',
+          },
+          { type: 'p', text: 'Pour toute question concernant un paiement ou un abonnement :' },
+          { type: 'p', text: 'support@larpilote.com' },
+        ],
+      },
+      {
+        heading: '5. Propriété intellectuelle',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Le nom LARPILOTE, le logo, le monogramme LP, les textes, visuels, éléments graphiques, contenus et éléments du site sont protégés par les règles applicables en matière de propriété intellectuelle.',
+          },
+          { type: 'p', text: 'Toute reproduction ou utilisation non autorisée est interdite.' },
+        ],
+      },
+      {
+        heading: '6. Liens externes',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Le site peut contenir des liens vers des services ou plateformes tiers, notamment Airbnb, Booking.com, PayPal ou d’autres outils utilisés dans le cadre des services LARPILOTE.',
+          },
+          {
+            type: 'p',
+            text: 'LARPILOTE n’est pas responsable du contenu, du fonctionnement ou de la disponibilité de ces services tiers.',
           },
         ],
       },
       {
-        heading: '5. Liens hypertextes',
+        heading: '7. Responsabilité',
         blocks: [
+          { type: 'p', text: 'LARPILOTE intervient dans le cadre d’une obligation de moyens.' },
           {
             type: 'p',
-            text: 'Le Site peut contenir des liens vers des plateformes tierces (Airbnb, Booking.com, WhatsApp, etc.). LARPILOTE n’exerce aucun contrôle sur le contenu de ces sites et n’assume aucune responsabilité quant à leur disponibilité ou leur contenu.',
+            text: 'Les services proposés ne constituent pas une garantie de réservations, de taux d’occupation, de chiffre d’affaires ou de revenus.',
+          },
+          {
+            type: 'p',
+            text: 'Les résultats peuvent notamment dépendre du logement, de sa localisation, de la saisonnalité, des tarifs, de la demande, des avis et des conditions des plateformes de réservation.',
           },
         ],
       },
       {
-        heading: '6. Limitation de responsabilité',
+        heading: '8. Données personnelles',
         blocks: [
           {
             type: 'p',
-            text: 'LARPILOTE agit dans le cadre d’une obligation de moyens. Le Site et les services décrits ne constituent en aucun cas une garantie de taux d’occupation, de nombre de réservations ou de chiffre d’affaires. Les interventions physiques nécessaires sur un logement, leurs coûts, délais et garanties, restent sous la seule responsabilité du propriétaire, de la conciergerie ou du prestataire concerné.',
+            text: 'Les renseignements personnels recueillis dans le cadre de l’utilisation du Site et des services LARPILOTE sont traités conformément à notre Politique de confidentialité.',
           },
+          { type: 'p', text: 'Pour toute question relative à vos renseignements personnels :' },
+          { type: 'p', text: 'support@larpilote.com' },
         ],
       },
       {
-        heading: '7. Données personnelles',
+        heading: '9. Informations complémentaires',
         blocks: [
+          { type: 'p', text: 'LARPILOTE privilégie un fonctionnement digital, simple et à distance.' },
+          { type: 'p', text: 'Si vous souhaitez obtenir des informations supplémentaires concernant :' },
           {
-            type: 'p',
-            text: 'Le traitement des données personnelles collectées via le Site est décrit dans notre Politique de confidentialité.',
+            type: 'ul',
+            items: [
+              'l’activité',
+              'les services',
+              'les conditions contractuelles',
+              'les informations administratives',
+              'les informations juridiques',
+            ],
           },
+          { type: 'p', text: 'notre équipe est disponible à :' },
+          { type: 'p', text: 'support@larpilote.com' },
         ],
       },
       {
-        heading: '8. Droit applicable',
+        heading: '10. Droit applicable',
         blocks: [
           {
             type: 'p',
-            text: 'Les présentes mentions légales sont soumises au droit [juridiction à compléter]. Tout litige relatif à leur interprétation ou leur exécution relève de la compétence des tribunaux de [ville / juridiction à compléter].',
+            text: 'Les présentes mentions légales sont soumises au droit applicable à l’activité exploitant LARPILOTE, sous réserve des règles impératives applicables au client.',
           },
+          { type: 'p', text: 'Pour toute question :' },
+          { type: 'p', text: 'support@larpilote.com' },
         ],
       },
     ],
@@ -88,105 +167,253 @@ export const legalPages = {
 
   confidentialite: {
     title: 'Politique de confidentialité',
-    updated: 'Dernière mise à jour : 12 août 2026',
+    updated: 'Dernière mise à jour : 15 août 2026',
     sections: [
       {
-        heading: '1. Responsable du traitement',
+        heading: '1. Notre engagement',
         blocks: [
           {
             type: 'p',
-            text: 'Le responsable du traitement des données collectées sur larpilote.com est [raison sociale à compléter], joignable à l’adresse support@larpilote.com.',
+            text: 'Chez LARPILOTE, nous accordons de l’importance à la confidentialité et à la sécurité des renseignements que nos clients et utilisateurs nous confient.',
           },
-        ],
-      },
-      {
-        heading: '2. Données que nous collectons',
-        blocks: [
-          { type: 'p', text: 'Via le formulaire de contact et le questionnaire « Diagnostic gratuit » :' },
+          { type: 'p', text: 'Cette politique explique simplement :' },
           {
             type: 'ul',
             items: [
-              'Nom et prénom',
-              'Adresse e-mail et numéro de téléphone / WhatsApp',
-              'Profil (propriétaire ou conciergerie)',
-              'Ville ou pays du ou des logements',
-              'Nombre de logements et plateformes utilisées',
-              'Besoins exprimés et contenu du message',
+              'quelles informations nous pouvons recueillir',
+              'pourquoi nous les utilisons',
+              'avec qui elles peuvent être partagées',
+              'comment nous les protégeons',
+              'comment vous pouvez nous contacter',
             ],
           },
           {
             type: 'p',
-            text: 'Une fois un client accompagné par LARPILOTE, des données complémentaires peuvent être collectées dans le cadre du service : informations relatives au logement, procédures et instructions voyageurs, coordonnées des prestataires et personnes de confiance désignés, ainsi que les accès nécessaires aux plateformes de réservation dans les limites autorisées par le client.',
+            text: 'Notre objectif est de recueillir uniquement les informations nécessaires au fonctionnement de nos services.',
           },
         ],
       },
       {
-        heading: '3. Finalités du traitement',
+        heading: '2. Les informations que nous pouvons recueillir',
         blocks: [
+          { type: 'p', text: 'Selon votre utilisation de LARPILOTE, nous pouvons recueillir :' },
+          { type: 'sub', text: 'Informations de contact' },
           {
             type: 'ul',
             items: [
-              'Répondre aux demandes de contact et qualifier les besoins exprimés',
-              'Fournir et exécuter les services de gestion virtuelle et de pilotage à distance souscrits',
-              'Assurer la communication avec les voyageurs et la coordination des prestataires désignés',
-              'Établir les rapports d’activité prévus par la formule souscrite',
-              'Améliorer nos services et la qualité de nos échanges',
+              'nom et prénom',
+              'adresse e-mail',
+              'numéro de téléphone',
+              'nom de l’entreprise, lorsque pertinent',
+              'pays ou région',
             ],
           },
-        ],
-      },
-      {
-        heading: '4. Base légale',
-        blocks: [
+          { type: 'sub', text: 'Informations relatives au service' },
+          {
+            type: 'ul',
+            items: [
+              'formule choisie',
+              'nombre de logements',
+              'informations nécessaires à la gestion des réservations',
+              'informations relatives aux annonces',
+              'demandes adressées au support',
+              'communications nécessaires à l’exécution de la prestation',
+            ],
+          },
+          { type: 'sub', text: 'Informations de paiement' },
           {
             type: 'p',
-            text: 'Les traitements reposent selon les cas sur le consentement de la personne concernée (formulaire de contact), sur l’exécution d’un contrat (client accompagné par LARPILOTE) ou sur l’intérêt légitime de LARPILOTE à répondre aux demandes qui lui sont adressées.',
+            text: 'Les paiements sont traités par les prestataires de paiement proposés sur notre site, notamment PayPal.',
+          },
+          { type: 'p', text: 'Nous ne demandons pas que les informations complètes de carte bancaire nous soient envoyées par e-mail.' },
+          { type: 'sub', text: 'Informations techniques' },
+          {
+            type: 'p',
+            text: 'Lorsque vous utilisez notre site, certaines informations techniques peuvent être automatiquement recueillies, comme :',
+          },
+          {
+            type: 'ul',
+            items: ['type d’appareil', 'navigateur', 'adresse IP', 'pages consultées', 'date et heure de connexion'],
           },
         ],
       },
       {
-        heading: '5. Destinataires des données',
+        heading: '3. Pourquoi utilisons-nous ces informations ?',
+        blocks: [
+          { type: 'p', text: 'Nous utilisons ces informations pour :' },
+          {
+            type: 'ul',
+            items: [
+              'fournir nos prestations',
+              'créer et gérer les abonnements',
+              'communiquer avec nos clients',
+              'traiter les demandes de support',
+              'suivre les réservations',
+              'gérer les paiements',
+              'améliorer le site et nos services',
+              'assurer la sécurité',
+              'prévenir les abus ou fraudes',
+              'respecter nos obligations légales',
+            ],
+          },
+          { type: 'p', text: 'Nous ne vendons pas vos renseignements personnels à des tiers.' },
+        ],
+      },
+      {
+        heading: '4. Informations concernant les voyageurs',
         blocks: [
           {
             type: 'p',
-            text: 'Les données sont accessibles à l’équipe LARPILOTE dans la limite de leurs attributions, ainsi qu’aux prestataires techniques nécessaires au fonctionnement du Site et des services (hébergement, messagerie, outils de gestion). Les coordonnées des prestataires locaux désignés par le client peuvent être partagées avec les voyageurs, selon les instructions du client, uniquement dans le cadre de la coordination d’un incident.',
+            text: 'Dans le cadre de certaines prestations, LARPILOTE peut traiter des informations concernant les voyageurs pour le compte d’un propriétaire ou d’une conciergerie.',
+          },
+          { type: 'p', text: 'Ces informations sont utilisées uniquement dans la mesure nécessaire à l’exécution de la prestation.' },
+          {
+            type: 'p',
+            text: 'Le propriétaire ou la conciergerie demeure responsable des informations qu’il transmet à LARPILOTE et doit disposer des autorisations nécessaires pour leur utilisation.',
           },
         ],
       },
       {
-        heading: '6. Durée de conservation',
+        heading: '5. Prestataires et services tiers',
         blocks: [
+          { type: 'p', text: 'Pour fonctionner, LARPILOTE peut utiliser différents services numériques, notamment :' },
+          {
+            type: 'ul',
+            items: [
+              'PayPal',
+              'Airbnb',
+              'Booking.com',
+              'services d’hébergement',
+              'outils de communication',
+              'outils de gestion',
+              'services technologiques nécessaires au fonctionnement du site',
+            ],
+          },
+          { type: 'p', text: 'Certains fournisseurs peuvent traiter des données dans un autre pays.' },
           {
             type: 'p',
-            text: 'Les données issues d’une demande de contact non suivie d’effet sont conservées pendant une durée maximale de 3 ans. Les données relatives à un client accompagné par LARPILOTE sont conservées pendant la durée de la relation contractuelle, augmentée des durées de conservation légales applicables.',
+            text: 'Lorsque cela est nécessaire, LARPILOTE prend les mesures appropriées pour protéger les renseignements confiés.',
           },
         ],
       },
       {
-        heading: '7. Sécurité',
+        heading: '6. Paiements',
         blocks: [
           {
             type: 'p',
-            text: 'LARPILOTE met en œuvre des mesures techniques et organisationnelles raisonnables destinées à protéger les données personnelles contre l’accès non autorisé, la perte ou l’altération.',
+            text: 'Lorsque vous effectuez un paiement, certaines informations sont transmises directement au prestataire de paiement afin de permettre le traitement de la transaction.',
+          },
+          { type: 'p', text: 'Le traitement est également soumis aux règles de confidentialité du prestataire concerné.' },
+        ],
+      },
+      {
+        heading: '7. Conservation',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Nous conservons les renseignements uniquement pendant la période nécessaire à leur utilisation ou pendant la durée requise par les obligations légales applicables.',
+          },
+          {
+            type: 'p',
+            text: 'Lorsque les renseignements ne sont plus nécessaires, ils sont supprimés, détruits ou anonymisés lorsque cela est approprié.',
           },
         ],
       },
       {
-        heading: '8. Vos droits',
+        heading: '8. Protection',
         blocks: [
+          { type: 'p', text: 'Nous mettons en place des mesures raisonnables pour protéger les renseignements contre :' },
+          {
+            type: 'ul',
+            items: [
+              'l’accès non autorisé',
+              'la perte',
+              'l’utilisation abusive',
+              'la divulgation',
+              'la modification ou la destruction non autorisée',
+            ],
+          },
+          { type: 'p', text: 'Aucun système informatique ne peut cependant garantir une sécurité absolue.' },
+        ],
+      },
+      {
+        heading: '9. Vos droits',
+        blocks: [
+          { type: 'p', text: 'Selon la législation applicable, vous pouvez notamment demander :' },
+          {
+            type: 'ul',
+            items: [
+              'l’accès aux renseignements que nous détenons à votre sujet',
+              'la correction d’informations inexactes',
+              'des informations sur leur utilisation',
+              'le retrait d’un consentement lorsque celui-ci constitue la base du traitement',
+              'la suppression de certaines informations lorsque la loi le permet',
+            ],
+          },
+          { type: 'p', text: 'Pour toute demande :' },
+          { type: 'p', text: 'support@larpilote.com' },
           {
             type: 'p',
-            text: 'Conformément à la réglementation applicable en matière de protection des données, vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité sur vos données personnelles. Vous pouvez exercer ces droits en écrivant à support@larpilote.com. Vous disposez également du droit d’introduire une réclamation auprès de l’autorité de protection des données compétente.',
+            text: 'Nous pouvons demander certaines informations afin de vérifier l’identité du demandeur avant de traiter une demande.',
           },
         ],
       },
       {
-        heading: '9. Modifications',
+        heading: '10. Témoins et technologies similaires',
+        blocks: [
+          { type: 'p', text: 'Le site LARPILOTE peut utiliser des cookies ou technologies similaires afin de :' },
+          {
+            type: 'ul',
+            items: [
+              'assurer son fonctionnement',
+              'améliorer l’expérience utilisateur',
+              'mesurer l’utilisation du site',
+              'améliorer nos services',
+              'assurer la sécurité',
+            ],
+          },
+          { type: 'p', text: 'Vous pouvez contrôler certains cookies à partir des paramètres de votre navigateur.' },
+        ],
+      },
+      {
+        heading: '11. Communications',
         blocks: [
           {
             type: 'p',
-            text: 'La présente politique peut être mise à jour pour refléter l’évolution de nos pratiques ou de la réglementation. La date de dernière mise à jour figure en haut de cette page.',
+            text: 'Nous pouvons vous envoyer les communications nécessaires à votre abonnement ou à l’utilisation de nos services, notamment :',
           },
+          {
+            type: 'ul',
+            items: [
+              'confirmation d’inscription',
+              'confirmation de paiement',
+              'informations concernant votre abonnement',
+              'informations importantes concernant nos services',
+              'réponses à vos demandes',
+            ],
+          },
+          {
+            type: 'p',
+            text: 'Lorsque nous envoyons des communications commerciales, nous respectons les règles applicables en matière de communications électroniques.',
+          },
+        ],
+      },
+      {
+        heading: '12. Modifications de la politique',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Nous pouvons mettre à jour cette Politique de confidentialité afin de tenir compte de l’évolution de nos services, de la technologie ou des obligations légales.',
+          },
+          { type: 'p', text: 'La date de dernière mise à jour est indiquée en haut de cette page.' },
+          { type: 'p', text: 'Lorsque la loi exige une information ou un consentement particulier, nous prendrons les mesures nécessaires.' },
+        ],
+      },
+      {
+        heading: '13. Contact',
+        blocks: [
+          { type: 'p', text: 'Pour toute question concernant la confidentialité ou l’utilisation de vos renseignements :' },
+          { type: 'p', text: 'support@larpilote.com' },
         ],
       },
     ],
