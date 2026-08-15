@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { navGroups, whatsappLink } from '../data'
-import { Icon, WhatsAppIcon } from '../lib/icons'
+import { navGroups } from '../data'
+import { Icon } from '../lib/icons'
 import Button from './ui/Button'
 import Logo from './Logo'
 
@@ -98,16 +98,7 @@ export default function Nav() {
             )}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-4">
-            <a
-              href={whatsappLink('Bonjour LARPILOTE, j’aimerais échanger sur mon activité.')}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Parler à LARPILOTE sur WhatsApp"
-              className="p-2 text-gold-dark hover:text-noir transition-colors"
-            >
-              <WhatsAppIcon className="w-[18px] h-[18px]" />
-            </a>
+          <div className="hidden lg:flex items-center">
             <Button to="/contact" variant="dark">
               Parler à LARPILOTE
             </Button>
@@ -196,16 +187,7 @@ export default function Nav() {
                 )}
               </nav>
 
-              <div className="mt-auto p-6 border-t border-paper/10 flex flex-col gap-3 shrink-0">
-                <a
-                  href={whatsappLink('Bonjour LARPILOTE, j’aimerais échanger sur mon activité.')}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-2 text-sm text-gold-light"
-                >
-                  <WhatsAppIcon className="w-4 h-4" />
-                  Parler à LARPILOTE sur WhatsApp
-                </a>
+              <div className="mt-auto p-6 border-t border-paper/10 shrink-0">
                 <Button to="/contact" variant="light" className="w-full">
                   Parler à LARPILOTE
                 </Button>

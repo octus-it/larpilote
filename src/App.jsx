@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -7,7 +7,6 @@ import Home from './pages/Home'
 import Owners from './pages/Owners'
 import Concierges from './pages/Concierges'
 import ServicesPage from './pages/ServicesPage'
-import PricingPage from './pages/PricingPage'
 import HowItWorksPage from './pages/HowItWorksPage'
 import FAQPage from './pages/FAQPage'
 import ContactPage from './pages/ContactPage'
@@ -25,7 +24,7 @@ export default function App() {
         <Route path="/proprietaires" element={<Owners />} />
         <Route path="/conciergeries" element={<Concierges />} />
         <Route path="/services" element={<ServicesPage />} />
-        <Route path="/forfaits" element={<PricingPage />} />
+        <Route path="/forfaits" element={<Navigate to="/#tarifs" replace />} />
         <Route path="/comment-ca-marche" element={<HowItWorksPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contact" element={<ContactPage />} />

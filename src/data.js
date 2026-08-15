@@ -203,28 +203,6 @@ export const plans = [
     featured: true,
   },
   {
-    slug: 'performance',
-    name: 'Performance',
-    price: '10 % des revenus générés',
-    unit: 'Minimum mensuel : 49 €',
-    tagline: 'Une formule conçue pour les propriétaires qui souhaitent renforcer le pilotage et l’optimisation de leur activité.',
-    longTagline: 'Pour les propriétaires qui souhaitent renforcer le pilotage et l’optimisation de leur activité.',
-    featuresIntro: 'Tout ce qui est inclus dans Business, plus :',
-    features: [
-      'Optimisation continue',
-      'Analyse commerciale',
-      'Analyse des périodes creuses',
-      'Recommandations stratégiques',
-      'Suivi renforcé des performances',
-      'Coordination renforcée des incidents',
-      'Reporting avancé',
-    ],
-    disclaimer: 'La formule Performance vise à optimiser le pilotage de votre activité. Elle ne constitue pas une garantie de taux d’occupation, de réservation ou de chiffre d’affaires.',
-    cta: 'Parler à LARPILOTE',
-    audience: 'proprietaire',
-    featured: false,
-  },
-  {
     slug: 'relais',
     name: 'Relais',
     price: 'À partir de 299',
@@ -265,15 +243,8 @@ export const faqItems = [
 ]
 
 export const navGroups = [
-  {
-    label: 'Solutions',
-    items: [
-      { label: 'Propriétaires', to: '/proprietaires', text: 'Déléguez la gestion de votre logement.' },
-      { label: 'Conciergeries', to: '/conciergeries', text: 'Externalisez votre back-office.' },
-    ],
-  },
   { label: 'Nos services', to: '/services' },
-  { label: 'Nos forfaits', to: '/forfaits' },
+  { label: 'Nos forfaits', to: '/#tarifs' },
   {
     label: 'Ressources',
     items: [
@@ -289,7 +260,7 @@ export const footerColumns = [
     title: 'Propriétaires',
     links: [
       { label: 'Nos services', to: '/services' },
-      { label: 'Nos forfaits', to: '/forfaits' },
+      { label: 'Nos forfaits', to: '/#tarifs' },
       { label: 'Comment ça marche', to: '/comment-ca-marche' },
       { label: 'FAQ', to: '/faq' },
       { label: 'Contact', to: '/contact' },
@@ -379,7 +350,7 @@ export const quizQuestions = [
     id: 'delegation',
     question: 'Quel niveau de délégation recherchez-vous ?',
     type: 'single',
-    options: ['Communication uniquement', 'Gestion digitale complète', 'Pilotage et optimisation', 'Back-office pour ma conciergerie'],
+    options: ['Communication uniquement', 'Gestion digitale complète', 'Back-office pour ma conciergerie'],
   },
 ]
 
@@ -387,7 +358,6 @@ export function recommendPlan(answers) {
   if (answers.profile === 'Conciergerie' || answers.delegation === 'Back-office pour ma conciergerie') {
     return 'relais'
   }
-  if (answers.delegation === 'Pilotage et optimisation') return 'performance'
   if (answers.delegation === 'Gestion digitale complète') return 'business'
   if (answers.delegation === 'Communication uniquement') return 'essentiel'
   return 'business'

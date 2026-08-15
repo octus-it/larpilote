@@ -85,7 +85,7 @@ export default function HeroHome({ image, kicker, title, subtitle, text, childre
           </motion.p>
         )}
         {text && (
-          <motion.p variants={item} className="mt-4 text-sm md:text-base max-w-xl font-light opacity-65 leading-relaxed hidden sm:block">
+          <motion.p variants={item} className="mt-4 text-sm md:text-sm italic max-w-xl font-light opacity-65 leading-relaxed hidden sm:block">
             {text}
           </motion.p>
         )}

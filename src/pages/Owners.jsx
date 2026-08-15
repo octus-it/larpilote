@@ -100,7 +100,7 @@ export default function Owners() {
       </Section>
 
       <Section tone="beige" kicker="Nos formules" title="Quelle formule vous correspond ?">
-        <div className="grid sm:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6">
           {ownerPlans.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.06}>
               <div className="h-full border border-noir/15 bg-paper p-6">
@@ -114,7 +114,7 @@ export default function Owners() {
           ))}
         </div>
         <div className="mt-10">
-          <Button to="/forfaits" variant="outline" withArrow>Comparer les formules</Button>
+          <Button to="/#tarifs" variant="outline" withArrow>Comparer les formules</Button>
         </div>
       </Section>
 

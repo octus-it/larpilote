@@ -210,7 +210,7 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'LARPILOTE propose quatre formules, décrites en détail sur la page Nos forfaits : Essentiel, Business, Performance et Relais. Chaque formule précise le périmètre des tâches prises en charge (communication voyageurs, réservations, gestion multicanal, optimisation, coordination des incidents, reporting) ainsi que ses limites de volume et son tarif.',
+            text: 'LARPILOTE propose trois formules, décrites en détail dans la section Nos forfaits du site : Essentiel, Business et Relais. Chaque formule précise le périmètre des tâches prises en charge (communication voyageurs, réservations, gestion multicanal, optimisation, coordination des incidents, reporting) ainsi que ses limites de volume et son tarif.',
           },
         ],
       },
@@ -228,7 +228,7 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Les tarifs applicables sont ceux affichés sur le Site au moment de la souscription, exprimés hors taxes le cas échéant. La formule Performance est facturée en pourcentage des revenus générés, avec un minimum mensuel précisé au Client avant souscription. Les modalités de facturation et de paiement sont précisées au Client lors de la souscription.',
+            text: 'Les tarifs applicables sont ceux affichés sur le Site au moment de la souscription, exprimés hors taxes le cas échéant. Les modalités de facturation et de paiement sont précisées au Client lors de la souscription.',
           },
         ],
       },

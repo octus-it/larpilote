@@ -196,7 +196,7 @@ export default function Home() {
       </Section>
 
       <Section tone="beige" id="tarifs" kicker="Nos forfaits" title="Nos forfaits">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {plans.map((p, i) => (
             <PricingCard key={p.slug} plan={p} variant="compact" delay={i * 0.06} />
           ))}
