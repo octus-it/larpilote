@@ -45,7 +45,7 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
     if (!formRef.current.reportValidity()) {
       return Promise.reject(new Error('form-incomplete'))
     }
-    return actions.subscription.create({ plan_id: paypalPlanId })
+    return actions.subscription.create({ plan_id: paypalPlanId, quantity: 1 })
   }
 
   if (sent) {

@@ -176,6 +176,7 @@ export const plans = [
     cta: 'Choisir Essentiel',
     audience: 'proprietaire',
     featured: false,
+    paypalPlanId: 'P-9BB0158490282752FNKAK7SI',
   },
   {
     slug: 'business',
@@ -244,7 +245,7 @@ export const plans = [
     slug: 'relais',
     name: 'Relais',
     badge: 'Back-office digital pour conciergeries',
-    price: 'À partir de 399',
+    price: 'À partir de 409',
     unit: '$US / mois',
     tagline: 'Vous gérez le terrain. Larpilote gère le back-office.',
     longTagline: 'Vous gérez le terrain. Larpilote gère le back-office.',
