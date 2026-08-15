@@ -15,7 +15,7 @@ export const legalPages = {
               'Siège social : [adresse complète à compléter]',
               'Numéro de TVA intracommunautaire (le cas échéant) : [à compléter]',
               'Directeur de la publication : [Nom et prénom]',
-              'Contact : contact@larpilote.com',
+              'Contact : support@larpilote.com',
             ],
           },
         ],
@@ -95,14 +95,14 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Le responsable du traitement des données collectées sur larpilote.com est [raison sociale à compléter], joignable à l’adresse contact@larpilote.com.',
+            text: 'Le responsable du traitement des données collectées sur larpilote.com est [raison sociale à compléter], joignable à l’adresse support@larpilote.com.',
           },
         ],
       },
       {
         heading: '2. Données que nous collectons',
         blocks: [
-          { type: 'p', text: 'Via le formulaire de contact et le questionnaire « Trouver ma formule » :' },
+          { type: 'p', text: 'Via le formulaire de contact et le questionnaire « Diagnostic gratuit » :' },
           {
             type: 'ul',
             items: [
@@ -176,7 +176,7 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Conformément à la réglementation applicable en matière de protection des données, vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité sur vos données personnelles. Vous pouvez exercer ces droits en écrivant à contact@larpilote.com. Vous disposez également du droit d’introduire une réclamation auprès de l’autorité de protection des données compétente.',
+            text: 'Conformément à la réglementation applicable en matière de protection des données, vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité sur vos données personnelles. Vous pouvez exercer ces droits en écrivant à support@larpilote.com. Vous disposez également du droit d’introduire une réclamation auprès de l’autorité de protection des données compétente.',
           },
         ],
       },
@@ -361,7 +361,7 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Pour toute question relative à cette politique, vous pouvez nous écrire à contact@larpilote.com.',
+            text: 'Pour toute question relative à cette politique, vous pouvez nous écrire à support@larpilote.com.',
           },
         ],
       },

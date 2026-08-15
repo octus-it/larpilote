@@ -38,7 +38,7 @@ export const seoData = {
     image: '/images/hero-a-propos.jpg',
   },
   '/trouver-ma-formule': {
-    title: 'Trouver ma formule',
+    title: 'Diagnostic gratuit',
     description: 'Répondez à quelques questions et découvrez en 2 minutes la formule LARPILOTE la plus adaptée à votre activité de location courte durée.',
   },
   '/mentions-legales': {

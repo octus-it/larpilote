@@ -57,7 +57,7 @@ export default function ContactPage() {
                 </div>
               </a>
               <a
-                href="mailto:contact@larpilote.com"
+                href="mailto:support@larpilote.com"
                 className="flex items-start gap-4 border border-noir/10 p-5 hover:border-noir/30 transition-colors"
               >
                 <Icon name="mail" className="w-5 h-5 text-gold shrink-0 mt-0.5" strokeWidth={1.5} />

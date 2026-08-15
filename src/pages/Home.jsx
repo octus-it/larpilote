@@ -214,7 +214,7 @@ export default function Home() {
             Répondez à quelques questions et découvrez la formule la plus adaptée à votre situation.
           </p>
           <div className="mt-6">
-            <Button to="/trouver-ma-formule" variant="dark" withArrow>Trouver ma formule</Button>
+            <Button to="/trouver-ma-formule" variant="dark" withArrow>Diagnostic gratuit</Button>
           </div>
         </Reveal>
       </Section>

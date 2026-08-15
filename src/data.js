@@ -246,7 +246,7 @@ export const plans = [
     slug: 'relais',
     name: 'Relais',
     badge: 'Back-office digital pour conciergeries',
-    price: 'À partir de 409',
+    price: 'À partir de 419',
     unit: '$US / mois',
     tagline: 'Vous gérez le terrain. Larpilote gère le back-office.',
     longTagline: 'Vous gérez le terrain. Larpilote gère le back-office.',

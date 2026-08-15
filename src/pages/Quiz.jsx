@@ -61,7 +61,7 @@ export default function Quiz() {
     <>
       <SEO {...seoData['/trouver-ma-formule']} path="/trouver-ma-formule" />
       <PageHero
-        kicker="Trouver ma formule"
+        kicker="Diagnostic gratuit"
         title="Quelques questions pour cerner votre besoin."
         subtitle="Pas d’intelligence artificielle compliquée : juste les bonnes questions pour vous orienter vers la formule adaptée."
       />
