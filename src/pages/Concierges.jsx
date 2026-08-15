@@ -18,14 +18,6 @@ const scope = [
 const provide = ['Vos procédures', 'Vos consignes', 'Vos contacts', 'Vos prestataires']
 const flow = ['reçoit', 'analyse', 'contacte', 'coordonne', 'suit', 'informe']
 
-const pricingFactors = [
-  'Le nombre de logements',
-  'Le volume de réservations',
-  'Les plateformes',
-  'Le volume de messages',
-  'Le niveau de coordination demandé',
-]
-
 export default function Concierges() {
   return (
     <>
@@ -105,13 +97,8 @@ export default function Concierges() {
 
       <Section tone="beige" kicker="Relais" title="Relais">
         <div className="max-w-xl">
-          <p className="font-display text-3xl md:text-4xl">À partir de 299 € <span className="text-base font-body opacity-60">/ mois</span></p>
-          <p className="mt-6 text-sm opacity-70">Le tarif est adapté selon :</p>
-          <ul className="mt-3 space-y-2">
-            {pricingFactors.map((f) => (
-              <li key={f} className="text-sm opacity-80">{f}</li>
-            ))}
-          </ul>
+          <p className="font-display text-3xl md:text-4xl">À partir de 399 $US <span className="text-base font-body opacity-60">/ mois</span></p>
+          <p className="mt-6 text-sm opacity-70">Jusqu’à 5 logements et 50 réservations / mois au total.</p>
           <div className="mt-8">
             <Button to="/contact?forfait=relais" variant="dark" withArrow>Demander une proposition</Button>
           </div>
