@@ -1,5 +1,4 @@
-// Replace with the real LARPILOTE WhatsApp number before going live.
-export const whatsappNumber = '221000000000'
+export const whatsappNumber = '18198095434'
 
 export function whatsappLink(message) {
   const base = `https://wa.me/${whatsappNumber}`

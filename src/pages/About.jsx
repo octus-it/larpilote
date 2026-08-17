@@ -11,7 +11,7 @@ export default function About() {
     <>
       <SEO {...seoData['/a-propos']} path="/a-propos" />
       <PageHero
-        image="/images/hero-a-propos.jpg"
+        image="/images/a-propos-larpilote.jpeg"
         minHeight={false}
         kicker="À propos"
         title="LARPILOTE est né d’une idée simple."

@@ -20,7 +20,7 @@ export const legalPages = {
           },
           { type: 'p', text: 'E-mail : contact@larpilote.com' },
           { type: 'p', text: 'Support : support@larpilote.com' },
-          { type: 'p', text: 'Téléphone : [numéro à renseigner]' },
+          { type: 'p', text: 'Téléphone : +1 (819) 809-5434' },
           { type: 'p', text: 'Adresse professionnelle : [adresse à renseigner]' },
           {
             type: 'p',
