@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import CookieBanner from './components/CookieBanner'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Owners from './pages/Owners'
@@ -51,6 +52,7 @@ export default function App() {
       </Routes>
       <Footer />
       <WhatsAppButton />
+      <CookieBanner />
     </div>
   )
 }

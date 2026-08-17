@@ -8,8 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-8">
           <div className="col-span-2">
             <img src="/images/logo-lockup.png" alt="LARPILOTE" className="h-9 w-auto -ml-1" />
-            <p className="mt-4 text-sm opacity-60 max-w-[220px] leading-relaxed">
-              Votre logement. Votre contrôle. Notre pilotage.
+            <p className="mt-4 text-sm opacity-60 max-w-[240px] leading-relaxed">
+              Gestion virtuelle et pilotage opérationnel de vos locations courte durée, à distance.
             </p>
           </div>
 
