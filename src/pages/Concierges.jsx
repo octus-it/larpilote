@@ -100,7 +100,7 @@ export default function Concierges() {
 
       <Section tone="beige" kicker="Relais" title="Relais">
         <div className="max-w-xl">
-          <p className="font-display text-3xl md:text-4xl">À partir de 419 $US <span className="text-base font-body opacity-60">/ mois</span></p>
+          <p className="font-display text-3xl md:text-4xl">À partir de 419 $US <span className="text-base font-body opacity-60">/ mois / logement</span></p>
           <p className="mt-6 text-sm opacity-70">Jusqu’à 5 logements et 50 réservations / mois au total.</p>
           <div className="mt-8">
             <Button to="/contact?forfait=relais" variant="dark" withArrow>Demander une proposition</Button>

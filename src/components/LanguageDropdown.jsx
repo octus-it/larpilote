@@ -3,8 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Icon } from '../lib/icons'
 
 const languages = [
-  { code: 'fr', label: 'Français canadien', short: 'FR', flag: '/images/flags/quebec.svg', available: true },
-  { code: 'en', label: 'Anglais canadien', short: 'EN', flag: '/images/flags/canada.svg', available: true },
+  { code: 'fr', label: 'Français', short: 'FR', flag: '/images/flags/france.svg', available: true },
+  { code: 'en', label: 'Anglais', short: 'EN', flag: '/images/flags/gb.svg', available: true },
 ]
 
 export default function LanguageDropdown({ variant = 'light' }) {
