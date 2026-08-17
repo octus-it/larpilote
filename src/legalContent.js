@@ -18,10 +18,8 @@ export const legalPages = {
             type: 'p',
             text: 'L’activité est exercée principalement à distance et en ligne. LARPILOTE ne reçoit pas sa clientèle dans un local commercial ouvert au public.',
           },
-          { type: 'p', text: 'E-mail : contact@larpilote.com' },
-          { type: 'p', text: 'Support : support@larpilote.com' },
+          { type: 'p', text: 'E-mail : support@larpilote.com' },
           { type: 'p', text: 'Téléphone : +1 (819) 809-5434' },
-          { type: 'p', text: 'Adresse professionnelle : [adresse à renseigner]' },
           {
             type: 'p',
             text: 'Pour toute demande concernant les informations administratives ou juridiques de l’activité LARPILOTE, vous pouvez contacter notre support :',
@@ -32,10 +30,13 @@ export const legalPages = {
       {
         heading: '2. Hébergement du site',
         blocks: [
-          { type: 'p', text: 'Le site larpilote.com est hébergé par :' },
           {
-            type: 'ul',
-            items: ['[Nom de l’hébergeur]', '[Coordonnées de l’hébergeur à renseigner]'],
+            type: 'p',
+            text: 'Les coordonnées de l’hébergeur du site larpilote.com sont communiquées sur demande motivée, conformément aux dispositions applicables, notamment pour des raisons de sécurité.',
+          },
+          {
+            type: 'p',
+            text: 'Toute demande peut être adressée à : support@larpilote.com',
           },
         ],
       },
@@ -527,7 +528,7 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Les présentes CGV sont soumises au droit [juridiction à compléter]. À défaut de résolution amiable, tout litige relève de la compétence des tribunaux de [ville / juridiction à compléter].',
+            text: 'Les présentes CGV sont soumises au droit applicable dans la province de Québec, Canada. À défaut de résolution amiable, tout litige relève de la compétence exclusive des tribunaux du district judiciaire du siège social de LARPILOTE, au Québec.',
           },
         ],
       },

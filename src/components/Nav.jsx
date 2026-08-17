@@ -5,6 +5,7 @@ import { navGroups } from '../data'
 import { Icon } from '../lib/icons'
 import Button from './ui/Button'
 import Logo from './Logo'
+import LanguageDropdown from './LanguageDropdown'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -98,7 +99,8 @@ export default function Nav() {
             )}
           </nav>
 
-          <div className="hidden lg:flex items-center">
+          <div className="hidden lg:flex items-center gap-2">
+            <LanguageDropdown variant="light" />
             <Button to="/contact" variant="dark">
               Parler à LARPILOTE
             </Button>
@@ -146,6 +148,9 @@ export default function Nav() {
                 <Button to="/conciergeries" variant="outlineLight" className="w-full">
                   Je suis une conciergerie
                 </Button>
+                <div className="flex justify-end -mr-3">
+                  <LanguageDropdown variant="dark" />
+                </div>
               </div>
 
               <nav className="flex flex-col px-6 py-2 gap-1 overflow-y-auto">

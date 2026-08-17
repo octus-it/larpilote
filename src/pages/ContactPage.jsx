@@ -27,7 +27,8 @@ export default function ContactPage() {
     <>
       <SEO {...seoData['/contact']} path="/contact" />
       <PageHero
-        image="/images/hero-contact.jpg"
+        image="/images/contact-larpilote.jpeg"
+        imagePosition="center 30%"
         minHeight={false}
         kicker="Contact"
         title="Parlons de votre activité."

@@ -11,7 +11,8 @@ export default function ServicesPage() {
     <>
       <SEO {...seoData['/services']} path="/services" />
       <PageHero
-        image="/images/hero-services.jpg"
+        image="/images/services-larpilote.jpeg"
+        imagePosition="center 20%"
         minHeight={false}
         kicker="Nos services"
         title="Un pilotage à distance. Une gestion plus fluide."

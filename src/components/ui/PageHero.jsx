@@ -1,11 +1,11 @@
 import Reveal from '../Reveal'
 
-export default function PageHero({ image, kicker, title, subtitle, text, children, minHeight = true }) {
+export default function PageHero({ image, imagePosition = 'center', kicker, title, subtitle, text, children, minHeight = true }) {
   if (image) {
     return (
       <section className={`relative isolate flex items-end bg-noir ${minHeight ? 'min-h-[560px] md:min-h-[92vh]' : 'py-28'} px-6 md:px-10 pb-8 md:pb-24 pt-24 md:pt-32`}>
         <div className="absolute inset-0 -z-10">
-          <img src={image} alt="" className="w-full h-full object-cover object-center" />
+          <img src={image} alt="" className="w-full h-full object-cover" style={{ objectPosition: imagePosition }} />
           <div className="absolute inset-0 bg-gradient-to-t from-noir via-noir/55 to-transparent" />
         </div>
         <div className="max-w-page mx-auto w-full text-paper">
