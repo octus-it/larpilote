@@ -106,14 +106,17 @@ export default function Nav() {
             </Button>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="lg:hidden p-2 -mr-2"
-            aria-label="Ouvrir le menu"
-          >
-            <Icon name="menu" className="w-6 h-6" strokeWidth={1.5} />
-          </button>
+          <div className="flex items-center lg:hidden -mr-2">
+            <LanguageDropdown variant="light" />
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="p-2"
+              aria-label="Ouvrir le menu"
+            >
+              <Icon name="menu" className="w-6 h-6" strokeWidth={1.5} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -148,9 +151,6 @@ export default function Nav() {
                 <Button to="/conciergeries" variant="outlineLight" className="w-full">
                   Je suis une conciergerie
                 </Button>
-                <div className="flex justify-end -mr-3">
-                  <LanguageDropdown variant="dark" />
-                </div>
               </div>
 
               <nav className="flex flex-col px-6 py-2 gap-1 overflow-y-auto">
