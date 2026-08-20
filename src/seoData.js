@@ -1,11 +1,11 @@
 export const seoData = {
   '/': {
-    title: 'LARPILOTE | Gestion virtuelle de locations courte durée',
+    title: 'LARPILOTE | Gestion Airbnb et locations courte durée à distance',
     description: 'LARPILOTE pilote à distance vos locations courte durée : voyageurs, réservations, Airbnb, Booking, optimisation et back-office pour propriétaires et conciergeries.',
   },
   '/proprietaires': {
-    title: 'Propriétaires',
-    description: 'Vous possédez le bien, LARPILOTE pilote le quotidien : communication voyageurs, réservations, tarification et coordination des incidents, à distance.',
+    title: 'Gestion Airbnb et location courte durée pour propriétaires',
+    description: 'LARPILOTE accompagne les propriétaires dans la gestion à distance de leurs locations courte durée : Airbnb, Booking, voyageurs, réservations, annonces et performances.',
     image: '/images/hero-proprietaires.jpg',
   },
   '/conciergeries': {
