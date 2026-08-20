@@ -9,8 +9,8 @@ export const seoData = {
     image: '/images/hero-proprietaires.jpg',
   },
   '/conciergeries': {
-    title: 'Conciergeries',
-    description: 'LARPILOTE RELAIS : le back-office digital des conciergeries. Vous gérez le terrain, nous gérons messages, réservations et coordination à distance.',
+    title: 'Gestion Airbnb pour conciergeries',
+    description: 'LARPILOTE accompagne les conciergeries dans le pilotage à distance de leurs locations courte durée : voyageurs, réservations, Airbnb, Booking, performances et back-office.',
     image: '/images/hero-conciergeries.jpg',
   },
   '/services': {
