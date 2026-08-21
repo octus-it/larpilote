@@ -25,7 +25,7 @@ export default function Concierges() {
     <>
       <SEO {...seoData['/conciergeries']} path="/conciergeries" />
       <PageHero
-        image="/images/hero-conciergeries.jpg"
+        image="/images/services-larpilote.jpeg"
         kicker="Conciergeries"
         title="Votre conciergerie grandit. Votre back-office aussi."
         subtitle="Plus de logements signifie plus de messages, plus de réservations et plus de tâches administratives."
