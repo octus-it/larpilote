@@ -18,12 +18,27 @@ import LegalPage from './pages/LegalPage'
 
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'LARPILOTE',
-  url: 'https://larpilote.com',
-  logo: 'https://larpilote.com/images/logo-mark.png',
-  description: 'Gestion virtuelle et pilotage opérationnel à distance des locations courte durée pour propriétaires et conciergeries.',
-  areaServed: 'Worldwide',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': 'https://larpilote.com/#organization',
+      name: 'LARPILOTE',
+      url: 'https://larpilote.com/',
+      logo: 'https://larpilote.com/images/logo-mark.png',
+      description: 'Gestion virtuelle et pilotage opérationnel à distance des locations courte durée pour propriétaires et conciergeries.',
+      email: 'support@larpilote.com',
+      telephone: '+1-819-809-5434',
+      areaServed: 'Worldwide',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://larpilote.com/#website',
+      name: 'LARPILOTE',
+      url: 'https://larpilote.com/',
+      publisher: { '@id': 'https://larpilote.com/#organization' },
+      inLanguage: 'fr-FR',
+    },
+  ],
 }
 
 export default function App() {
