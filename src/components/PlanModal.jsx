@@ -1,27 +1,20 @@
 import Modal from './ui/Modal'
-import ContactForm from './ContactForm'
+import RequestForm from './RequestForm'
+import { formatPlanPrice } from '../data'
 
 export default function PlanModal({ plan, onClose }) {
-  const isSimplePrice = plan ? /^[0-9][0-9\s]*$/.test(plan.price) : false
-
   return (
     <Modal open={!!plan} onClose={onClose} labelledBy="plan-modal-title">
       {plan && (
-        <div className="p-7 sm:p-9 max-h-[85vh] overflow-y-auto">
-          <p className="kicker mb-2 text-gold-dark">Nos forfaits</p>
-          <h2 id="plan-modal-title" className="font-display text-2xl md:text-3xl">
-            {plan.name}
+        <div className="p-6 sm:p-9 max-h-[85vh] overflow-y-auto">
+          <p className="kicker mb-2 text-gold-dark">{plan.form === 'audit' ? 'Audit' : 'Nos forfaits'}</p>
+          <h2 id="plan-modal-title" className="font-display text-2xl md:text-3xl pr-8">
+            {plan.form === 'audit' ? 'Demande d’audit' : `Formule ${plan.name}`}
           </h2>
-          <p className="mt-1.5 text-sm opacity-60">
-            {plan.price}
-            {isSimplePrice ? ` ${plan.unit}` : ` — ${plan.unit}`}
-          </p>
+          <p className="mt-1.5 text-sm opacity-60">{formatPlanPrice(plan)}</p>
 
           <div className="mt-7">
-            <ContactForm
-              plan={plan}
-              initialProfile={plan.audience === 'conciergerie' ? 'Conciergerie' : 'Propriétaire'}
-            />
+            <RequestForm type={plan.form} />
           </div>
         </div>
       )}

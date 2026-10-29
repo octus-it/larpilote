@@ -18,6 +18,10 @@ import {
   processSteps,
   whyUs,
   plans,
+  audit,
+  commonConditions,
+  engagementTerms,
+  diagnosticBookingUrl,
   incidentFlow,
 } from '../data'
 
@@ -203,20 +207,53 @@ export default function Home() {
       </Section>
 
       <Section tone="beige" id="tarifs" kicker="Nos forfaits" title="Nos forfaits">
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {plans.map((p, i) => (
             <PricingCard key={p.slug} plan={p} delay={i * 0.06} onSelect={setSelectedPlan} />
           ))}
         </div>
-        <Reveal className="mt-14 text-center">
-          <p className="font-display text-xl md:text-2xl">Vous ne savez pas quelle formule choisir ?</p>
-          <p className="mt-2 opacity-70 max-w-md mx-auto">
-            Répondez à quelques questions et découvrez la formule la plus adaptée à votre situation.
-          </p>
-          <div className="mt-6">
-            <Button to="/trouver-ma-formule" variant="dark" withArrow>Diagnostic gratuit</Button>
+        <p className="mt-10 text-center text-sm opacity-75">
+          Pas sûr de votre choix ?{' '}
+          <a href={diagnosticBookingUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-gold-dark">
+            Réservez un diagnostic gratuit de 30 minutes.
+          </a>
+        </p>
+      </Section>
+
+      <Section id="audit" kicker="Prestation ponctuelle" title={audit.title} subtitle={audit.tagline}>
+        <Reveal>
+          <div className="border border-noir/15 bg-paper p-7 md:p-10 grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-14">
+            <div>
+              <p className="opacity-80 leading-relaxed">{audit.text}</p>
+              <ul className="mt-7 space-y-2.5 text-sm">
+                {audit.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5">
+                    <Icon name="check" className="w-4 h-4 mt-0.5 shrink-0 text-gold" strokeWidth={1.5} />
+                    <span className="opacity-90">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex flex-col lg:border-l lg:border-noir/10 lg:pl-14">
+              <p className="font-display text-4xl md:text-5xl leading-tight">
+                {audit.price} <span className="text-base font-body opacity-60">{audit.unit}</span>
+              </p>
+              <p className="mt-6 text-sm opacity-70 leading-relaxed">{audit.note}</p>
+              <div className="mt-8 lg:mt-auto lg:pt-8">
+                <Button onClick={() => setSelectedPlan(audit)} variant="dark" className="w-full" withArrow>
+                  {audit.cta}
+                </Button>
+              </div>
+            </div>
           </div>
         </Reveal>
+
+        <div className="mt-12 max-w-3xl space-y-3 text-xs md:text-sm opacity-60 leading-relaxed">
+          {commonConditions.map((c) => (
+            <p key={c}>{c}</p>
+          ))}
+          {engagementTerms && <p>{engagementTerms}</p>}
+        </div>
       </Section>
 
       <section className="relative isolate overflow-hidden bg-noir text-paper py-20 md:py-28 px-6 md:px-10">

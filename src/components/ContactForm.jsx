@@ -1,8 +1,6 @@
-import { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { Icon } from '../lib/icons'
 import Button from './ui/Button'
-import PayPalButton from './PayPalButton'
 import { contactPlatforms, contactDelegation } from '../data'
 
 const emptyForm = {
@@ -24,21 +22,6 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
     message: plan ? `Je souhaite en savoir plus sur la formule ${plan.name}.` : '',
   }))
   const [sent, setSent] = useState(false)
-  const [agreed, setAgreed] = useState(false)
-  const formRef = useRef(null)
-  const paypalPlanId = plan?.paypalPlanId
-
-  // The per-logement plans (Essentiel, Business) bill price × quantity ; Relais
-  // is a flat "à partir de" rate and isn't multiplied by the units entered.
-  const isPerLogement = Boolean(plan?.unit?.includes('logement'))
-  const units = Math.max(1, Number(form.units) || 1)
-  const numericPrice = Number(plan?.price)
-  const subscriptionTotal =
-    isPerLogement && !Number.isNaN(numericPrice)
-      ? `${numericPrice * units} ${plan.unit.replace(' / logement', '')}`
-      : plan
-        ? `${plan.price} ${plan.unit}`
-        : ''
 
   const toggle = (key, value) => {
     setForm((f) => ({
@@ -53,34 +36,20 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
     onSent?.()
   }
 
-  // Validated on click, before the PayPal popup opens: reject() cleanly cancels
-  // the flow (native "please fill this field" hints via reportValidity), rather
-  // than failing mid-flow inside createSubscription.
-  const handlePaypalClick = (data, actions) =>
-    formRef.current.reportValidity() ? actions.resolve() : actions.reject()
-
-  const createSubscription = (data, actions) =>
-    actions.subscription.create({
-      plan_id: paypalPlanId,
-      quantity: isPerLogement ? units : 1,
-    })
-
   if (sent) {
     return (
       <div className="border border-noir/15 p-10 text-center">
         <Icon name="check" className="w-8 h-8 mx-auto text-gold" strokeWidth={1.5} />
         <p className="mt-5 font-display text-2xl">Merci.</p>
         <p className="mt-3 opacity-70 max-w-sm mx-auto">
-          {paypalPlanId
-            ? 'Votre paiement a bien été confirmé et votre demande transmise. L’équipe LARPILOTE reviendra vers vous rapidement.'
-            : 'Votre demande a bien été reçue. L’équipe LARPILOTE reviendra vers vous rapidement.'}
+          Votre demande a bien été reçue. L’équipe LARPILOTE reviendra vers vous rapidement.
         </p>
       </div>
     )
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-8">
       {plan && (
         <p className="text-sm border border-gold/40 text-gold-dark px-4 py-3">
           Concernant l’offre <strong>{plan.name}</strong>
@@ -177,57 +146,9 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
         />
       </Field>
 
-      {paypalPlanId ? (
-        <div>
-          <div className="border border-gold/40 px-5 py-5">
-            <p className="text-sm text-gold-dark">Vous êtes sur le point de souscrire à :</p>
-            <p className="mt-3 font-display text-lg">Formule {plan.name}</p>
-            {isPerLogement && (
-              <p className="mt-1 text-sm opacity-70">
-                {units} logement{units > 1 ? 's' : ''}
-              </p>
-            )}
-            <p className="mt-1 font-display text-xl">{subscriptionTotal}</p>
-
-            <label className="mt-5 flex items-start gap-2.5 cursor-pointer">
-              <input
-                type="checkbox"
-                required
-                checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-0.5 w-4 h-4 shrink-0 accent-noir"
-              />
-              <span className="text-xs opacity-80 leading-relaxed">
-                J’ai lu et j’accepte les{' '}
-                <Link to="/cgv" target="_blank" className="underline hover:text-gold-dark">
-                  CGV
-                </Link>{' '}
-                et la{' '}
-                <Link to="/confidentialite" target="_blank" className="underline hover:text-gold-dark">
-                  Politique de confidentialité
-                </Link>{' '}
-                de LARPILOTE.
-              </span>
-            </label>
-          </div>
-
-          <div className={`mt-4 transition-opacity ${agreed ? '' : 'opacity-40 pointer-events-none'}`}>
-            <PayPalButton
-              planId={paypalPlanId}
-              onClick={handlePaypalClick}
-              createSubscription={createSubscription}
-              onApprove={() => {
-                setSent(true)
-                onSent?.()
-              }}
-            />
-          </div>
-        </div>
-      ) : (
-        <Button type="submit" variant="dark" className="w-full sm:w-auto" withArrow>
-          Envoyer ma demande
-        </Button>
-      )}
+      <Button type="submit" variant="dark" className="w-full sm:w-auto" withArrow>
+        Envoyer ma demande
+      </Button>
 
       <style>{`
         .input {

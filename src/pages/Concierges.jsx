@@ -5,6 +5,9 @@ import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
 import SEO from '../components/SEO'
 import { seoData } from '../seoData'
+import { plans } from '../data'
+
+const relais = plans.find((p) => p.slug === 'relais')
 
 const keep = ['Vos clients.', 'Votre marque.', 'Vos équipes terrain.']
 
@@ -100,10 +103,11 @@ export default function Concierges() {
 
       <Section tone="beige" kicker="Relais" title="Relais">
         <div className="max-w-xl">
-          <p className="font-display text-3xl md:text-4xl">À partir de 419 $US <span className="text-base font-body opacity-60">/ mois / logement</span></p>
-          <p className="mt-6 text-sm opacity-70">Jusqu’à 5 logements et 50 réservations / mois au total.</p>
+          <p className="text-base opacity-60">{relais.pricePrefix}</p>
+          <p className="font-display text-3xl md:text-4xl">{relais.price} <span className="text-base font-body opacity-60">{relais.unit}</span></p>
+          <p className="mt-6 text-sm opacity-70">Offre sur étude personnalisée, adaptée à votre portefeuille.</p>
           <div className="mt-8">
-            <Button to="/contact?forfait=relais" variant="dark" withArrow>Demander une proposition</Button>
+            <Button to="/#relais" variant="dark" withArrow>{relais.cta}</Button>
           </div>
         </div>
       </Section>

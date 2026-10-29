@@ -1,7 +1,7 @@
 export const legalPages = {
   mentions: {
     title: 'Mentions légales',
-    updated: 'Dernière mise à jour : 15 août 2026',
+    updated: 'Dernière mise à jour : 29 octobre 2026',
     sections: [
       {
         heading: '1. Éditeur du site',
@@ -75,11 +75,7 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Les abonnements LARPILOTE peuvent être réglés en ligne au moyen des solutions de paiement proposées sur le Site, notamment PayPal.',
-          },
-          {
-            type: 'p',
-            text: 'Les informations bancaires nécessaires au paiement sont traitées par le prestataire de paiement concerné.',
+            text: 'Aucun paiement n’est effectué en ligne sur le Site. Les modalités de règlement sont communiquées au Client avant le démarrage de la prestation.',
           },
           { type: 'p', text: 'Pour toute question concernant un paiement ou un abonnement :' },
           { type: 'p', text: 'support@larpilote.com' },
@@ -100,7 +96,7 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Le site peut contenir des liens vers des services ou plateformes tiers, notamment Airbnb, Booking.com, PayPal ou d’autres outils utilisés dans le cadre des services LARPILOTE.',
+            text: 'Le site peut contenir des liens vers des services ou plateformes tiers, notamment Airbnb, Booking.com ou d’autres outils utilisés dans le cadre des services LARPILOTE.',
           },
           {
             type: 'p',
@@ -168,7 +164,7 @@ export const legalPages = {
 
   confidentialite: {
     title: 'Politique de confidentialité',
-    updated: 'Dernière mise à jour : 15 août 2026',
+    updated: 'Dernière mise à jour : 29 octobre 2026',
     sections: [
       {
         heading: '1. Notre engagement',
@@ -224,7 +220,7 @@ export const legalPages = {
           { type: 'sub', text: 'Informations de paiement' },
           {
             type: 'p',
-            text: 'Les paiements sont traités par les prestataires de paiement proposés sur notre site, notamment PayPal.',
+            text: 'Aucun paiement n’est effectué sur notre site. Les modalités de règlement sont communiquées directement au client.',
           },
           { type: 'p', text: 'Nous ne demandons pas que les informations complètes de carte bancaire nous soient envoyées par e-mail.' },
           { type: 'sub', text: 'Informations techniques' },
@@ -281,7 +277,7 @@ export const legalPages = {
           {
             type: 'ul',
             items: [
-              'PayPal',
+              'Resend (transmission des formulaires de demande du site)',
               'Airbnb',
               'Booking.com',
               'services d’hébergement',
@@ -302,9 +298,8 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Lorsque vous effectuez un paiement, certaines informations sont transmises directement au prestataire de paiement afin de permettre le traitement de la transaction.',
+            text: 'Aucun paiement n’est effectué sur notre site. Lorsqu’un règlement intervient selon les modalités convenues avec LARPILOTE, les informations nécessaires sont traitées par l’établissement ou le prestataire concerné, selon ses propres règles de confidentialité.',
           },
-          { type: 'p', text: 'Le traitement est également soumis aux règles de confidentialité du prestataire concerné.' },
         ],
       },
       {
@@ -422,7 +417,7 @@ export const legalPages = {
 
   cgv: {
     title: 'Conditions générales de vente',
-    updated: 'Dernière mise à jour : 12 août 2026',
+    updated: 'Dernière mise à jour : 29 octobre 2026',
     sections: [
       {
         heading: '1. Objet',

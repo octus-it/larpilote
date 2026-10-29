@@ -157,110 +157,148 @@ export const plans = [
     slug: 'essentiel',
     name: 'Essentiel',
     price: '109',
-    unit: '$US / mois / logement',
-    tagline: 'La gestion voyageurs essentielle pour les propriétaires qui souhaitent gagner du temps.',
-    longTagline: 'Pour les propriétaires qui veulent principalement déléguer la communication avec les voyageurs.',
+    unit: '$ US / mois / logement',
+    tagline: 'La tranquillité au quotidien.',
+    longTagline: 'Déléguez vos échanges avec les voyageurs et récupérez du temps pour vous.',
     features: [
-      'Communication voyageurs',
-      'Questions avant réservation',
-      'Messages avant arrivée',
-      'Assistance pendant le séjour',
-      'Messages de départ',
-      'Suivi des réservations',
-      'Modifications et annulations',
-      'Réponse aux avis',
-      'Réception et suivi des signalements',
+      'Gestion des messages des voyageurs avant, pendant et après leur séjour.',
+      'Réponses aux questions courantes des voyageurs.',
+      'Suivi des réservations, modifications et annulations.',
+      'Suivi des demandes et réclamations des voyageurs.',
+      'Réponses aux avis voyageurs, selon les accès autorisés.',
+      'Jusqu’à 10 réservations par mois et par logement.',
     ],
-    limit: 'Jusqu’à 10 réservations / mois',
     cta: 'Choisir Essentiel',
+    form: 'essentiel',
     audience: 'proprietaire',
     featured: false,
-    paypalPlanId: 'P-9BB0158490282752FNKAK7SI',
   },
   {
     slug: 'business',
     name: 'Business',
-    badge: 'Populaire',
     price: '189',
-    unit: '$US / mois / logement',
-    tagline: 'Pour les propriétaires qui souhaitent déléguer leur gestion quotidienne tout en améliorant les performances de leur logement.',
-    longTagline: 'Pour les propriétaires qui souhaitent déléguer leur gestion quotidienne tout en améliorant les performances de leur logement.',
-    featuresIntro: 'Tout ce qui est inclus dans la Formule Essentielle, plus :',
-    featureGroups: [
-      {
-        title: 'Gestion multicanale',
-        items: [
-          'Airbnb, Booking.com et canaux compatibles',
-          'Synchronisation des réservations et disponibilités',
-          'Centralisation des communications',
-        ],
-      },
-      {
-        title: 'Optimisation de l’annonce',
-        items: [
-          'Optimisation du titre et de la description',
-          'Mise en valeur des atouts du logement',
-          'Conseils sur les photos et la présentation',
-        ],
-      },
-      {
-        title: 'Accompagnement tarifaire',
-        items: [
-          'Analyse du positionnement des prix',
-          'Recommandations selon les périodes',
-          'Identification des périodes fortes et creuses',
-        ],
-      },
-      {
-        title: 'Suivi des performances',
-        items: [
-          'Suivi des réservations et de l’activité',
-          'Analyse des principaux indicateurs',
-          'Recommandations d’amélioration',
-        ],
-      },
-      {
-        title: 'Coordination des incidents',
-        items: [
-          'Suivi des signalements',
-          'Coordination avec les prestataires désignés',
-          'Suivi des interventions',
-          'Information du propriétaire',
-        ],
-      },
-      {
-        title: 'Rapport mensuel',
-        text: 'Un récapitulatif de l’activité, des principaux résultats et des recommandations Larpilote.',
-      },
+    unit: '$ US / mois / logement',
+    tagline: 'Le pilotage de votre activité.',
+    longTagline: 'Déléguez votre gestion quotidienne et prenez de meilleures décisions grâce à un suivi régulier de votre activité locative.',
+    featuresIntro: 'Toutes les prestations Essentiel, plus :',
+    features: [
+      'Suivi des annonces sur deux plateformes maximum, selon les accès disponibles.',
+      'Analyse mensuelle des indicateurs de réservation et de performance.',
+      'Revue mensuelle des tarifs et des promotions.',
+      'Un rapport mensuel personnalisé par logement.',
+      'Jusqu’à trois recommandations prioritaires par mois.',
+      'Un échange de suivi mensuel de 20 minutes.',
+      'Jusqu’à 10 réservations par mois et par logement.',
     ],
-    limit: 'Jusqu’à 10 réservations / mois / logement',
-    billingNote: 'Chaque logement est facturé séparément.',
-    disclaimer: 'Les interventions physiques, le ménage, la maintenance, les déplacements et l’accueil sur place ne sont pas inclus.',
-    cta: 'Choisir cette formule',
+    cta: 'Choisir Business',
+    form: 'business',
     audience: 'proprietaire',
     featured: true,
-    paypalPlanId: 'P-3UT034482S7209358NKAKGOA',
   },
   {
     slug: 'relais',
     name: 'Relais',
-    badge: 'Back-office digital pour conciergeries',
-    price: 'À partir de 419',
-    unit: '$US / mois / logement',
-    tagline: 'Vous gérez le terrain. Larpilote gère le back-office.',
-    longTagline: 'Vous gérez le terrain. Larpilote gère le back-office.',
+    pricePrefix: 'À partir de',
+    price: '419',
+    unit: '$ US / mois, dès 2 logements',
+    tagline: 'Votre relais opérationnel à distance.',
+    longTagline: 'Pour les conciergeries et gestionnaires multi-logements qui souhaitent déléguer une partie de leur back-office digital sans recruter immédiatement une équipe supplémentaire.',
     features: [
-      'Communication voyageurs, réservations, modifications, annulations, avis, signalements et suivi des demandes sur Airbnb, Booking.com et les canaux connectés.',
-      'Coordination avec vos équipes ou prestataires sur place.',
+      'Gestion des messages voyageurs et suivi des demandes.',
+      'Suivi des réservations.',
+      'Suivi et mise à jour des annonces, selon les accès disponibles.',
+      'Suivi des incidents et coordination à distance avec vos prestataires locaux.',
+      'Analyse des tarifs et suivi des performances.',
+      'Rapport mensuel d’activité.',
+      'Offre sur étude personnalisée, adaptée à votre portefeuille.',
     ],
-    limit: 'Jusqu’à 5 logements et 50 réservations / mois au total',
-    disclaimer: 'Ménage, accueil, déplacements, maintenance et interventions physiques non inclus.',
-    cta: 'Parler à Larpilote',
+    cta: 'Demander une étude personnalisée',
+    form: 'relais',
     audience: 'conciergerie',
     featured: false,
-    paypalPlanId: 'P-24A49682FP5752126NKAKOCQ',
   },
 ]
+
+export function formatPlanPrice(plan) {
+  return [plan.pricePrefix, plan.price, plan.unit].filter(Boolean).join(' ')
+}
+
+export const audit = {
+  slug: 'audit',
+  name: 'Audit',
+  title: 'Audit de performance de votre annonce Airbnb & Booking',
+  tagline: 'Identifiez ce qui freine votre annonce et repartez avec un plan d’action concret.',
+  text: 'LARPILOTE analyse votre annonce et les principaux éléments visibles de votre offre afin d’identifier les améliorations prioritaires à apporter à votre présence en ligne, et vous remet un plan d’action clair.',
+  features: [
+    'Analyse de l’annonce et de ses informations essentielles.',
+    'Vérification des informations relatives au séjour et au départ.',
+    'Revue des tarifs, promotions et frais visibles.',
+    'Identification des points d’amélioration prioritaires.',
+    'Plan d’action personnalisé et hiérarchisé.',
+    'Restitution lors d’un échange de 20 minutes.',
+  ],
+  price: '69',
+  unit: '$ US par logement, paiement unique',
+  note: 'Prestation ponctuelle, sans abonnement. Si vous souscrivez à une formule Essentiel ou Business pour le même logement dans les 30 jours suivant la livraison de votre audit, les 69 $ US déjà payés seront déduits de votre première mensualité. Déduction applicable une seule fois, non cumulable avec une autre remise.',
+  cta: 'Demander un audit',
+  form: 'audit',
+}
+
+export const commonConditions = [
+  'Les prestations LARPILOTE sont réalisées à distance, selon un périmètre et des horaires définis avec chaque client. Les interventions physiques, le ménage et la maintenance ne sont pas inclus.',
+  'Le volume de réservations, les plateformes prises en charge et les délais de réponse sont confirmés avant le démarrage. Au-delà de 10 réservations par mois et par logement pour les formules Essentiel et Business, ou au-delà du périmètre convenu pour Relais, nous ajustons ensemble la formule ou le tarif.',
+  'Les demandes exceptionnelles, la création complète d’annonces et les prestations hors périmètre peuvent faire l’objet d’un devis complémentaire.',
+  'LARPILOTE fournit un accompagnement opérationnel et des recommandations. Aucun résultat précis en matière de revenus, de réservations ou de classement n’est garanti.',
+]
+
+// Durée d'engagement et conditions de résiliation : à fournir par la direction.
+// Tant que la valeur est null, rien n'est affiché sur le site.
+export const engagementTerms = null
+
+// Adresse qui reçoit les demandes des formulaires (envoi via Resend).
+export const requestEmail = 'support@larpilote.com'
+
+// Lien Calendly du diagnostic gratuit de 30 minutes.
+export const diagnosticBookingUrl = ''
+
+export const requestProfiles = ['Propriétaire', 'Conciergerie ou gestionnaire']
+
+export const requestForms = {
+  essentiel: {
+    subject: 'LARPILOTE – Demande de formule Essentiel',
+    formule: 'Essentiel',
+  },
+  business: {
+    subject: 'LARPILOTE – Demande de formule Business',
+    formule: 'Business',
+  },
+  relais: {
+    subject: 'LARPILOTE – Demande d\'étude Relais',
+    bookings: true,
+    platforms: ['Airbnb', 'Booking.com', 'Autre', 'Plusieurs plateformes'],
+    needs: [
+      'Gestion des messages voyageurs',
+      'Suivi des réservations',
+      'Gestion des annonces',
+      'Suivi des performances',
+      'Coordination opérationnelle à distance',
+      'Autre',
+    ],
+  },
+  audit: {
+    subject: 'LARPILOTE – Demande d\'audit',
+    platform: ['Airbnb', 'Booking.com', 'Autre'],
+    listingUrl: true,
+    objectives: [
+      'Améliorer la présentation de l’annonce',
+      'Identifier les points à corriger',
+      'Revoir les tarifs et promotions',
+      'Vérifier la cohérence des informations',
+      'Obtenir un diagnostic global',
+      'Autre',
+    ],
+  },
+}
 
 export const faqItems = [
   { q: 'LARPILOTE est-elle une conciergerie ?', a: 'Non. LARPILOTE est un service de gestion virtuelle et de pilotage à distance. Nous ne remplaçons pas nécessairement les équipes physiques qui s’occupent du logement.' },
@@ -288,6 +326,7 @@ export const navGroups = [
       { label: 'À propos', to: '/a-propos', text: 'Notre mission et notre vision.' },
     ],
   },
+  { label: 'Contact', to: '/contact' },
 ]
 
 export const footerColumns = [

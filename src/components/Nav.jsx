@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { navGroups } from '../data'
+import { navGroups, diagnosticBookingUrl } from '../data'
 import { Icon } from '../lib/icons'
 import Button from './ui/Button'
 import Logo from './Logo'
@@ -101,8 +101,8 @@ export default function Nav() {
 
           <div className="hidden lg:flex items-center gap-2">
             <LanguageDropdown variant="light" />
-            <Button to="/contact" variant="dark">
-              Parler à LARPILOTE
+            <Button href={diagnosticBookingUrl} variant="dark">
+              Diagnostic gratuit
             </Button>
           </div>
 
@@ -193,8 +193,8 @@ export default function Nav() {
               </nav>
 
               <div className="mt-auto p-6 border-t border-paper/10 shrink-0">
-                <Button to="/contact" variant="light" className="w-full">
-                  Parler à LARPILOTE
+                <Button href={diagnosticBookingUrl} variant="light" className="w-full">
+                  Réserver un diagnostic gratuit
                 </Button>
               </div>
             </motion.div>
