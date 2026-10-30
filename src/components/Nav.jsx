@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { LocLink as Link, useData, useTr } from '../i18n/index.jsx'
 import { AnimatePresence, motion } from 'framer-motion'
-import { navGroups, diagnosticBookingUrl } from '../data'
 import { Icon } from '../lib/icons'
 import Button from './ui/Button'
 import Logo from './Logo'
 import LanguageDropdown from './LanguageDropdown'
 
 export default function Nav() {
+  const { navGroups, diagnosticBookingUrl } = useData()
+  const tr = useTr()
   const [open, setOpen] = useState(false)
   const [openGroup, setOpenGroup] = useState(null)
   const [openMobileGroup, setOpenMobileGroup] = useState(null)
@@ -102,7 +104,7 @@ export default function Nav() {
           <div className="hidden lg:flex items-center gap-2">
             <LanguageDropdown variant="light" />
             <Button href={diagnosticBookingUrl} variant="dark">
-              Diagnostic gratuit
+              {tr("Diagnostic gratuit")}
             </Button>
           </div>
 
@@ -112,7 +114,7 @@ export default function Nav() {
               type="button"
               onClick={() => setOpen(true)}
               className="p-2"
-              aria-label="Ouvrir le menu"
+              aria-label={tr("Ouvrir le menu")}
             >
               <Icon name="menu" className="w-6 h-6" strokeWidth={1.5} />
             </button>
@@ -139,17 +141,17 @@ export default function Nav() {
             >
               <div className="flex items-center justify-between px-6 h-[72px] border-b border-paper/10 shrink-0">
                 <Logo />
-                <button type="button" onClick={() => setOpen(false)} aria-label="Fermer le menu" className="p-2 -mr-2">
+                <button type="button" onClick={() => setOpen(false)} aria-label={tr("Fermer le menu")} className="p-2 -mr-2">
                   <Icon name="close" className="w-6 h-6" strokeWidth={1.5} />
                 </button>
               </div>
 
               <div className="p-6 flex flex-col gap-3 shrink-0">
                 <Button to="/proprietaires" variant="light" className="w-full">
-                  Je suis propriétaire
+                  {tr("Je suis propriétaire")}
                 </Button>
                 <Button to="/conciergeries" variant="outlineLight" className="w-full">
-                  Je suis une conciergerie
+                  {tr("Je suis une conciergerie")}
                 </Button>
               </div>
 
@@ -194,7 +196,7 @@ export default function Nav() {
 
               <div className="mt-auto p-6 border-t border-paper/10 shrink-0">
                 <Button href={diagnosticBookingUrl} variant="light" className="w-full">
-                  Réserver un diagnostic gratuit
+                  {tr("Réserver un diagnostic gratuit")}
                 </Button>
               </div>
             </motion.div>

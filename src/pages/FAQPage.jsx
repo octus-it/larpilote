@@ -4,13 +4,15 @@ import PageHero from '../components/ui/PageHero'
 import Accordion from '../components/ui/Accordion'
 import SEO from '../components/SEO'
 import { seoData } from '../seoData'
-import { faqItems } from '../data'
+import { useData, useTr } from '../i18n/index.jsx'
 
 export default function FAQPage() {
+  const tr = useTr()
+  const { faqItems } = useData()
   return (
     <>
       <SEO {...seoData['/faq']} path="/faq" />
-      <PageHero kicker="FAQ" title="Questions fréquentes" />
+      <PageHero kicker="FAQ" title={tr("Questions fréquentes")} />
 
       <Section>
         <div className="max-w-2xl mx-auto">
@@ -18,9 +20,9 @@ export default function FAQPage() {
         </div>
 
         <div className="mt-16 text-center">
-          <p className="opacity-70">Une autre question ?</p>
+          <p className="opacity-70">{tr("Une autre question ?")}</p>
           <div className="mt-5">
-            <Button to="/contact" variant="outline" withArrow>Contacter LARPILOTE</Button>
+            <Button to="/contact" variant="outline" withArrow>{tr("Contacter LARPILOTE")}</Button>
           </div>
         </div>
       </Section>

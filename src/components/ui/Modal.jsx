@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Icon } from '../../lib/icons'
+import { useTr } from '../../i18n/index.jsx'
 
 export default function Modal({ open, onClose, children, labelledBy }) {
+  const tr = useTr()
   useEffect(() => {
     if (!open) return
     const onKey = (e) => {
@@ -48,7 +50,7 @@ export default function Modal({ open, onClose, children, labelledBy }) {
               <button
                 type="button"
                 onClick={onClose}
-                aria-label="Fermer"
+                aria-label={tr("Fermer")}
                 className="absolute top-4 right-4 p-2 text-noir/50 hover:text-noir transition-colors"
               >
                 <Icon name="close" className="w-5 h-5" strokeWidth={1.5} />

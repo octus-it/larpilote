@@ -11,19 +11,7 @@ import HeroHome, { HeroCTA } from '../components/HeroHome'
 import PlanModal from '../components/PlanModal'
 import SEO from '../components/SEO'
 import { seoData } from '../seoData'
-import {
-  painPoints,
-  solutionFlow,
-  services,
-  processSteps,
-  whyUs,
-  plans,
-  audit,
-  commonConditions,
-  engagementTerms,
-  diagnosticBookingUrl,
-  incidentFlow,
-} from '../data'
+import { useData, useTr } from '../i18n/index.jsx'
 
 const incidentIcons = ['alert', 'chart', 'wrench', 'clipboard', 'shield']
 
@@ -49,6 +37,8 @@ function HoverCard({ icon, title, text, delay = 0 }) {
 }
 
 export default function Home() {
+  const tr = useTr()
+  const { painPoints, solutionFlow, services, processSteps, whyUs, plans, audit, commonConditions, engagementTerms, diagnosticBookingUrl, incidentFlow } = useData()
   const [selectedPlan, setSelectedPlan] = useState(null)
 
   return (
@@ -57,13 +47,13 @@ export default function Home() {
       <HeroHome
         image="/images/hero-home.jpg"
         kicker="Larpilote"
-        title="Votre logement. Votre contrôle. Notre pilotage."
-        subtitle="Gestion virtuelle et pilotage opérationnel des locations courte durée."
-        text="Vous avez le logement. Vous gardez le contrôle. LARPILOTE prend en charge une grande partie de votre gestion quotidienne à distance."
+        title={tr("Votre logement. Votre contrôle. Notre pilotage.")}
+        subtitle={tr("Gestion virtuelle et pilotage opérationnel des locations courte durée.")}
+        text={tr("Vous avez le logement. Vous gardez le contrôle. LARPILOTE prend en charge une grande partie de votre gestion quotidienne à distance.")}
       >
         <div className="flex flex-col sm:flex-row gap-4">
-          <HeroCTA to="/proprietaires" variant="primary">Je suis propriétaire</HeroCTA>
-          <HeroCTA to="/conciergeries" variant="secondary">Je suis une conciergerie</HeroCTA>
+          <HeroCTA to="/proprietaires" variant="primary">{tr("Je suis propriétaire")}</HeroCTA>
+          <HeroCTA to="/conciergeries" variant="secondary">{tr("Je suis une conciergerie")}</HeroCTA>
         </div>
       </HeroHome>
 
@@ -71,26 +61,25 @@ export default function Home() {
         <div className="max-w-page mx-auto grid md:grid-cols-[1.1fr_0.9fr] gap-12 md:gap-16 items-center">
           <div>
             <Reveal>
-              <p className="kicker mb-4">Votre activité</p>
+              <p className="kicker mb-4">{tr("Votre activité")}</p>
               <h2 className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight">
-                Vous avez le logement. Nous pilotons le quotidien.
+                {tr("Vous avez le logement. Nous pilotons le quotidien.")}
               </h2>
             </Reveal>
             <div className="mt-6 space-y-4 max-w-xl">
               <Reveal delay={0.1}>
                 <p className="text-base md:text-lg opacity-80 leading-relaxed">
-                  Gérer une location courte durée ne se résume pas à accueillir des voyageurs.
+                  {tr("Gérer une location courte durée ne se résume pas à accueillir des voyageurs.")}
                 </p>
               </Reveal>
               <Reveal delay={0.18}>
                 <p className="text-base md:text-lg opacity-80 leading-relaxed">
-                  Messages, réservations, calendriers, annonces, avis, tarification, incidents… Au fil des
-                  réservations, la gestion peut rapidement devenir chronophage.
+                  {tr("Messages, réservations, calendriers, annonces, avis, tarification, incidents… Au fil des réservations, la gestion peut rapidement devenir chronophage.")}
                 </p>
               </Reveal>
               <Reveal delay={0.26}>
                 <p className="font-display text-xl md:text-2xl leading-snug">
-                  LARPILOTE vous permet de déléguer cette charge sans abandonner le contrôle de votre activité.
+                  {tr("LARPILOTE vous permet de déléguer cette charge sans abandonner le contrôle de votre activité.")}
                 </p>
               </Reveal>
             </div>
@@ -107,7 +96,7 @@ export default function Home() {
               { label: 'Incidents', top: '82%', left: '34%' },
             ].map((c, i) => (
               <motion.div
-                key={c.label}
+                key={tr(c.label)}
                 initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -119,7 +108,7 @@ export default function Home() {
                   transition={{ duration: 4 + (i % 3), repeat: Infinity, ease: 'easeInOut', delay: i * 0.3 }}
                   className="inline-block border border-noir/15 bg-beige/70 px-4 py-2 text-xs md:text-sm font-mono uppercase tracking-wide text-noir/70 whitespace-nowrap"
                 >
-                  {c.label}
+                  {tr(c.label)}
                 </motion.span>
               </motion.div>
             ))}
@@ -127,7 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Section tone="beige" kicker="Le quotidien" title="Ce qui vous prend du temps">
+      <Section tone="beige" kicker={tr("Le quotidien")} title={tr("Ce qui vous prend du temps")}>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
           {painPoints.map((p, i) => (
             <HoverCard key={p.title} icon={p.icon} title={p.title} text={p.text} delay={i * 0.05} />
@@ -139,21 +128,19 @@ export default function Home() {
         <GlowBackground />
         <div className="relative z-10 max-w-page mx-auto">
           <Reveal className="mb-14 max-w-2xl">
-            <p className="kicker mb-4 text-gold-light">La solution</p>
+            <p className="kicker mb-4 text-gold-light">{tr("La solution")}</p>
             <h2 className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight">
-              LARPILOTE prend le relais à distance.
+              {tr("LARPILOTE prend le relais à distance.")}
             </h2>
             <p className="mt-5 text-base md:text-lg opacity-80 leading-relaxed">
-              Nous devenons votre pilote opérationnel à distance. Vous conservez la gestion physique de votre
-              logement et vos équipes locales. Nous prenons en charge les tâches digitales, administratives et
-              relationnelles définies dans votre formule.
+              {tr("Nous devenons votre pilote opérationnel à distance. Vous conservez la gestion physique de votre logement et vos équipes locales. Nous prenons en charge les tâches digitales, administratives et relationnelles définies dans votre formule.")}
             </p>
           </Reveal>
           <Flow items={solutionFlow} tone="noir" />
         </div>
       </section>
 
-      <Section id="services" kicker="Nos services" title="Nos services">
+      <Section id="services" kicker={tr("Nos services")} title={tr("Nos services")}>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
           {services.map((s, i) => (
             <HoverCard key={s.title} icon={s.icon} title={s.title} text={s.text} delay={i * 0.05} />
@@ -161,7 +148,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section tone="beige" id="comment-ca-marche" kicker="Le processus" title="Comment ça marche ?">
+      <Section tone="beige" id="comment-ca-marche" kicker={tr("Le processus")} title={tr("Comment ça marche ?")}>
         <div className="relative mt-4">
           <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-noir/10" />
           <motion.div
@@ -188,7 +175,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section kicker="Pourquoi LARPILOTE" title="Pourquoi LARPILOTE ?">
+      <Section kicker={tr("Pourquoi LARPILOTE")} title={tr("Pourquoi LARPILOTE ?")}>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
           {whyUs.map((w, i) => (
             <Reveal key={w.title} delay={i * 0.05}>
@@ -206,21 +193,21 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section tone="beige" id="tarifs" kicker="Nos forfaits" title="Nos forfaits">
+      <Section tone="beige" id="tarifs" kicker={tr("Nos forfaits")} title={tr("Nos forfaits")}>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {plans.map((p, i) => (
             <PricingCard key={p.slug} plan={p} delay={i * 0.06} onSelect={setSelectedPlan} />
           ))}
         </div>
         <p className="mt-10 text-center text-sm opacity-75">
-          Pas sûr de votre choix ?{' '}
+          {tr("Pas sûr de votre choix ?")}{' '}
           <a href={diagnosticBookingUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-gold-dark">
-            Réservez un diagnostic gratuit de 30 minutes.
+            {tr("Réservez un diagnostic gratuit de 30 minutes.")}
           </a>
         </p>
       </Section>
 
-      <Section id="audit" kicker="Prestation ponctuelle" title={audit.title} subtitle={audit.tagline}>
+      <Section id="audit" kicker={tr("Prestation ponctuelle")} title={audit.title} subtitle={audit.tagline}>
         <Reveal>
           <div className="border border-noir/15 bg-paper p-7 md:p-10 grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-14">
             <div>
@@ -252,7 +239,20 @@ export default function Home() {
           {commonConditions.map((c) => (
             <p key={c}>{c}</p>
           ))}
-          {engagementTerms && <p>{engagementTerms}</p>}
+          {engagementTerms && (
+            <div className="pt-4">
+              <p className="font-display text-base text-noir">{engagementTerms.title}</p>
+              <ul className="mt-2 space-y-1.5">
+                {engagementTerms.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="mt-2 w-1 h-1 rounded-full bg-gold shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3">{engagementTerms.relais}</p>
+            </div>
+          )}
         </div>
       </Section>
 
@@ -262,7 +262,7 @@ export default function Home() {
           <Reveal className="mb-12 max-w-2xl">
             <p className="kicker mb-4 text-gold-light">Incidents</p>
             <h2 className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight">
-              Un incident survient ? Nous pilotons la suite.
+              {tr("Un incident survient ? Nous pilotons la suite.")}
             </h2>
           </Reveal>
           <div className="max-w-lg">
@@ -285,22 +285,22 @@ export default function Home() {
               ))}
             </ul>
             <p className="mt-8 text-sm md:text-base opacity-70 leading-relaxed border-t border-paper/15 pt-6">
-              Vous gardez la décision. Nous assurons le pilotage à distance.
+              {tr("Vous gardez la décision. Nous assurons le pilotage à distance.")}
             </p>
           </div>
         </div>
       </section>
 
-      <Section align="center" kicker="Prêt ?" title="Prêt à déléguer la gestion de votre logement ?">
+      <Section align="center" kicker={tr("Prêt ?")} title={tr("Prêt à déléguer la gestion de votre logement ?")}>
         <div className="flex flex-col items-center gap-2 text-lg md:text-xl font-display opacity-80">
           {['Moins de messages.', 'Moins de stress.', 'Plus de temps.', 'Un logement mieux piloté.'].map((line, i) => (
             <Reveal key={line} delay={i * 0.08}>
-              <p>{line}</p>
+              <p>{tr(line)}</p>
             </Reveal>
           ))}
         </div>
         <Reveal delay={0.4} className="mt-9">
-          <Button to="/contact" variant="dark" withArrow>Parler à LARPILOTE</Button>
+          <Button to="/contact" variant="dark" withArrow>{tr("Parler à LARPILOTE")}</Button>
         </Reveal>
       </Section>
 

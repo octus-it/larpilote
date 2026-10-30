@@ -7,7 +7,7 @@ const root = path.resolve(__dirname, '..')
 const distDir = path.join(root, 'dist')
 const ssrDir = path.join(root, 'dist-ssr')
 
-const routes = [
+const frRoutes = [
   '/',
   '/proprietaires',
   '/conciergeries',
@@ -22,6 +22,9 @@ const routes = [
   '/cgv',
   '/cookies',
 ]
+
+// Chaque page existe en français (/…) et en anglais (/en/…).
+const routes = [...frRoutes, ...frRoutes.map((r) => (r === '/' ? '/en' : `/en${r}`))]
 
 const entryPath = path.join(ssrDir, 'entry-server.js')
 if (!fs.existsSync(entryPath)) {
@@ -45,7 +48,9 @@ for (const url of routes) {
     .filter(Boolean)
     .join('\n    ')
 
+  const lang = url === '/en' || url.startsWith('/en/') ? 'en' : 'fr'
   const page = template
+    .replace('<html lang="fr">', `<html lang="${lang}">`)
     .replace('<!--app-head-->', headTags)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
 

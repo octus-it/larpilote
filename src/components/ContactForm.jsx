@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Icon } from '../lib/icons'
 import Button from './ui/Button'
 import { contactPlatforms, contactDelegation } from '../data'
+import { useTr } from '../i18n/index.jsx'
 
 const emptyForm = {
   name: '',
@@ -16,10 +17,11 @@ const emptyForm = {
 }
 
 export default function ContactForm({ plan, initialProfile = '', onSent }) {
+  const tr = useTr()
   const [form, setForm] = useState(() => ({
     ...emptyForm,
     profile: initialProfile,
-    message: plan ? `Je souhaite en savoir plus sur la formule ${plan.name}.` : '',
+    message: plan ? `${tr('Je souhaite en savoir plus sur la formule')} ${plan.name}.` : '',
   }))
   const [sent, setSent] = useState(false)
 
@@ -40,9 +42,9 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
     return (
       <div className="border border-noir/15 p-10 text-center">
         <Icon name="check" className="w-8 h-8 mx-auto text-gold" strokeWidth={1.5} />
-        <p className="mt-5 font-display text-2xl">Merci.</p>
+        <p className="mt-5 font-display text-2xl">{tr("Merci.")}</p>
         <p className="mt-3 opacity-70 max-w-sm mx-auto">
-          Votre demande a bien été reçue. L’équipe LARPILOTE reviendra vers vous rapidement.
+          {tr("Votre demande a bien été reçue. L’équipe LARPILOTE reviendra vers vous rapidement.")}
         </p>
       </div>
     )
@@ -52,14 +54,14 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
     <form onSubmit={handleSubmit} className="space-y-8">
       {plan && (
         <p className="text-sm border border-gold/40 text-gold-dark px-4 py-3">
-          Concernant l’offre <strong>{plan.name}</strong>
+          {tr("Concernant l’offre")} <strong>{plan.name}</strong>
         </p>
       )}
 
-      <p className="kicker">Votre projet</p>
+      <p className="kicker">{tr("Votre projet")}</p>
 
       <div className="grid sm:grid-cols-2 gap-6">
-        <Field label="Nom et prénom">
+        <Field label={tr("Nom et prénom")}>
           <input
             required
             value={form.name}
@@ -67,7 +69,7 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
             className="input"
           />
         </Field>
-        <Field label="Adresse e-mail">
+        <Field label={tr("Adresse e-mail")}>
           <input
             required
             type="email"
@@ -78,7 +80,7 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
         </Field>
       </div>
 
-      <Field label="Téléphone / WhatsApp">
+      <Field label={tr("Téléphone / WhatsApp")}>
         <input
           required
           value={form.phone}
@@ -87,7 +89,7 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
         />
       </Field>
 
-      <Field label="Vous êtes">
+      <Field label={tr("Vous êtes")}>
         <div className="flex gap-3">
           {['Propriétaire', 'Conciergerie'].map((v) => (
             <label key={v} className={`relative flex-1 border px-4 py-3 text-sm text-center cursor-pointer transition-colors ${form.profile === v ? 'border-noir bg-noir text-paper' : 'border-noir/20'}`}>
@@ -98,21 +100,21 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
                 checked={form.profile === v}
                 onChange={() => setForm({ ...form, profile: v })}
               />
-              {v}
+              {tr(v)}
             </label>
           ))}
         </div>
       </Field>
 
       <div className="grid sm:grid-cols-2 gap-6">
-        <Field label="Ville / pays du logement">
+        <Field label={tr("Ville / pays du logement")}>
           <input
             value={form.city}
             onChange={(e) => setForm({ ...form, city: e.target.value })}
             className="input"
           />
         </Field>
-        <Field label="Nombre de logements">
+        <Field label={tr("Nombre de logements")}>
           <input
             value={form.units}
             onChange={(e) => setForm({ ...form, units: e.target.value })}
@@ -121,23 +123,23 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
         </Field>
       </div>
 
-      <Field label="Plateformes utilisées">
+      <Field label={tr("Plateformes utilisées")}>
         <div className="flex flex-wrap gap-3">
           {contactPlatforms.map((p) => (
-            <Checkbox key={p} label={p} checked={form.platforms.includes(p)} onChange={() => toggle('platforms', p)} />
+            <Checkbox key={p} label={tr(p)} checked={form.platforms.includes(p)} onChange={() => toggle('platforms', p)} />
           ))}
         </div>
       </Field>
 
-      <Field label="Que souhaitez-vous déléguer ?">
+      <Field label={tr("Que souhaitez-vous déléguer ?")}>
         <div className="flex flex-wrap gap-3">
           {contactDelegation.map((d) => (
-            <Checkbox key={d} label={d} checked={form.delegation.includes(d)} onChange={() => toggle('delegation', d)} />
+            <Checkbox key={d} label={tr(d)} checked={form.delegation.includes(d)} onChange={() => toggle('delegation', d)} />
           ))}
         </div>
       </Field>
 
-      <Field label="Parlez-nous de votre besoin">
+      <Field label={tr("Parlez-nous de votre besoin")}>
         <textarea
           rows={5}
           value={form.message}
@@ -147,7 +149,7 @@ export default function ContactForm({ plan, initialProfile = '', onSent }) {
       </Field>
 
       <Button type="submit" variant="dark" className="w-full sm:w-auto" withArrow>
-        Envoyer ma demande
+        {tr("Envoyer ma demande")}
       </Button>
 
       <style>{`

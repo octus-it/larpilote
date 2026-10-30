@@ -164,7 +164,7 @@ export const legalPages = {
 
   confidentialite: {
     title: 'Politique de confidentialité',
-    updated: 'Dernière mise à jour : 29 octobre 2026',
+    updated: 'Dernière mise à jour : 30 octobre 2026',
     sections: [
       {
         heading: '1. Notre engagement',
@@ -278,6 +278,7 @@ export const legalPages = {
             type: 'ul',
             items: [
               'Resend (transmission des formulaires de demande du site)',
+              'Google Analytics et Google Tag Manager (mesure d’audience)',
               'Airbnb',
               'Booking.com',
               'services d’hébergement',
@@ -460,7 +461,19 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'Sauf accord contraire, les services sont souscrits pour une durée déterminée avec reconduction, dans les conditions précisées au Client lors de la souscription. Chaque partie peut résilier dans les conditions et délais qui seront précisés dans le contrat conclu avec le Client. Le Client peut à tout moment changer de formule, sous réserve des conditions prévues à son contrat.',
+            text: 'Formules Essentiel et Business : l’abonnement est mensuel, sans durée minimale d’engagement, et facturé mensuellement. Il est renouvelé automatiquement chaque mois, sauf résiliation.',
+          },
+          {
+            type: 'p',
+            text: 'Le Client peut résilier à tout moment par e-mail adressé à support@larpilote.com, avec un préavis de 30 jours. La résiliation prend effet 30 jours après la date de réception de l’e-mail de résiliation par LARPILOTE.',
+          },
+          {
+            type: 'p',
+            text: 'Formule Relais : les conditions particulières sont définies au moment de la souscription.',
+          },
+          {
+            type: 'p',
+            text: 'Le Client peut à tout moment changer de formule, sous réserve des conditions prévues à son contrat.',
           },
         ],
       },
@@ -532,7 +545,7 @@ export const legalPages = {
 
   cookies: {
     title: 'Gestion des cookies',
-    updated: 'Dernière mise à jour : 12 août 2026',
+    updated: 'Dernière mise à jour : 30 octobre 2026',
     sections: [
       {
         heading: '1. Qu’est-ce qu’un cookie ?',
@@ -548,7 +561,11 @@ export const legalPages = {
         blocks: [
           {
             type: 'p',
-            text: 'À ce jour, larpilote.com n’utilise aucun cookie publicitaire ni outil de mesure d’audience. Le Site peut recourir à des cookies strictement nécessaires à son fonctionnement technique (par exemple pour mémoriser certaines préférences d’affichage). Ces cookies ne nécessitent pas de consentement préalable au regard de la réglementation applicable.',
+            text: 'larpilote.com utilise Google Analytics et Google Tag Manager, des services de Google, pour mesurer l’audience du Site (pages consultées, provenance des visiteurs, type d’appareil) et améliorer nos services. Ces outils peuvent déposer des cookies sur votre appareil et transmettre des données aux serveurs de Google, qui peuvent être situés hors de votre pays.',
+          },
+          {
+            type: 'p',
+            text: 'Le Site peut également recourir à des cookies ou à des données stockées dans votre navigateur strictement nécessaires à son fonctionnement, par exemple pour mémoriser votre choix concernant le bandeau cookies.',
           },
         ],
       },
@@ -562,16 +579,7 @@ export const legalPages = {
         ],
       },
       {
-        heading: '4. Évolution à venir',
-        blocks: [
-          {
-            type: 'p',
-            text: 'LARPILOTE pourra, à l’avenir, mettre en place des outils de mesure d’audience afin d’améliorer le Site. Le cas échéant, cette politique sera mise à jour et un bandeau de consentement adapté sera proposé aux visiteurs, conformément à la réglementation applicable.',
-          },
-        ],
-      },
-      {
-        heading: '5. Gérer vos préférences',
+        heading: '4. Gérer vos préférences',
         blocks: [
           {
             type: 'p',
@@ -580,7 +588,7 @@ export const legalPages = {
         ],
       },
       {
-        heading: '6. Contact',
+        heading: '5. Contact',
         blocks: [
           {
             type: 'p',

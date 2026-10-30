@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { LocLink as Link, useLang, useTr } from '../i18n/index.jsx'
 import { Icon } from '../lib/icons'
 import Button from './ui/Button'
 import { requestEmail, requestForms, requestProfiles } from '../data'
@@ -51,7 +51,7 @@ function validate(form, config) {
   return errors
 }
 
-function buildPayload(type, form, config) {
+function buildPayload(type, form, config, lang) {
   const fields = [
     ['Nom et prénom', form.name.trim()],
     ['Adresse e-mail', form.email.trim()],
@@ -67,10 +67,13 @@ function buildPayload(type, form, config) {
   if (config.objectives) fields.push(['Objectif principal de l’audit', form.objective])
   fields.push(['Message complémentaire', form.message.trim() || '—'])
   fields.push(['Consentement', 'Accepté'])
+  fields.push(['Langue du site', lang === 'en' ? 'Anglais' : 'Français'])
   return { type, email: form.email.trim(), honey: form.honey, fields }
 }
 
 export default function RequestForm({ type }) {
+  const tr = useTr()
+  const lang = useLang()
   const config = requestForms[type]
   const [form, setForm] = useState(emptyForm)
   const [errors, setErrors] = useState({})
@@ -105,7 +108,7 @@ export default function RequestForm({ type }) {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(buildPayload(type, form, config)),
+        body: JSON.stringify(buildPayload(type, form, config, lang)),
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok || data.success !== true) throw new Error('send failed')
@@ -121,8 +124,7 @@ export default function RequestForm({ type }) {
       <div className="border border-noir/15 p-8 sm:p-10 text-center" role="status">
         <Icon name="check" className="w-8 h-8 mx-auto text-gold" strokeWidth={1.5} />
         <p className="mt-5 opacity-80 max-w-sm mx-auto leading-relaxed">
-          Merci pour votre demande. Votre message a bien été transmis à LARPILOTE. Nous reviendrons vers vous
-          pour étudier votre besoin et vous préciser les prochaines étapes.
+          {tr('Merci pour votre demande. Votre message a bien été transmis à LARPILOTE. Nous reviendrons vers vous pour étudier votre besoin et vous préciser les prochaines étapes.')}
         </p>
       </div>
     )
@@ -260,25 +262,24 @@ export default function RequestForm({ type }) {
             className="mt-0.5 w-5 h-5 shrink-0 accent-noir"
           />
           <span className="text-sm opacity-80 leading-relaxed">
-            J’accepte que LARPILOTE utilise ces informations pour répondre à ma demande.{' '}
+            {tr('J’accepte que LARPILOTE utilise ces informations pour répondre à ma demande.')}{' '}
             <Link to="/confidentialite" target="_blank" className="underline hover:text-gold-dark">
-              Voir la politique de confidentialité.
+              {tr('Voir la politique de confidentialité.')}
             </Link>
           </span>
         </label>
-        {errors.consent && <p className="mt-2 text-xs text-red-700">{errors.consent}</p>}
+        {errors.consent && <p className="mt-2 text-xs text-red-700">{tr(errors.consent)}</p>}
       </div>
 
       {status === 'error' && (
         <p className="text-sm border border-red-700/40 text-red-800 px-4 py-3" role="alert">
-          Votre demande n’a pas pu être envoyée. Veuillez réessayer dans quelques instants ou nous écrire
-          directement à{' '}
+          {tr('Votre demande n’a pas pu être envoyée. Veuillez réessayer dans quelques instants ou nous écrire directement à')}{' '}
           <a href={`mailto:${requestEmail}`} className="underline">{requestEmail}</a>.
         </p>
       )}
 
       <Button type="submit" variant="dark" className="w-full sm:w-auto" withArrow disabled={status === 'sending'}>
-        {status === 'sending' ? 'Envoi en cours…' : 'Envoyer ma demande'}
+        {status === 'sending' ? tr('Envoi en cours…') : tr('Envoyer ma demande')}
       </Button>
 
       <style>{`
@@ -296,18 +297,20 @@ export default function RequestForm({ type }) {
 }
 
 function Field({ name, label, error, group = false, children }) {
+  const tr = useTr()
   const Comp = group ? 'fieldset' : 'label'
   const Title = group ? 'legend' : 'span'
   return (
     <Comp className="block" data-field={name}>
-      <Title className="block text-xs font-mono uppercase tracking-wide opacity-60 mb-2.5">{label}</Title>
+      <Title className="block text-xs font-mono uppercase tracking-wide opacity-60 mb-2.5">{tr(label)}</Title>
       {children}
-      {error && <p className="mt-2 text-xs text-red-700">{error}</p>}
+      {error && <p className="mt-2 text-xs text-red-700">{tr(error)}</p>}
     </Comp>
   )
 }
 
 function Choice({ type, name, label, checked, onChange }) {
+  const tr = useTr()
   return (
     <label
       className={`relative flex-1 sm:flex-none border px-4 py-3 text-sm text-center cursor-pointer transition-colors ${
@@ -315,17 +318,18 @@ function Choice({ type, name, label, checked, onChange }) {
       }`}
     >
       <input type={type} name={name} className="sr-only" checked={checked} onChange={onChange} />
-      {label}
+      {tr(label)}
     </label>
   )
 }
 
 function Select({ value, onChange, options }) {
+  const tr = useTr()
   return (
     <select value={value} onChange={(e) => onChange(e.target.value)} className="input appearance-auto">
-      <option value="">Choisir…</option>
+      <option value="">{tr('Choisir…')}</option>
       {options.map((o) => (
-        <option key={o} value={o}>{o}</option>
+        <option key={o} value={o}>{tr(o)}</option>
       ))}
     </select>
   )

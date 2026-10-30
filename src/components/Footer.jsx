@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
-import { footerColumns } from '../data'
+import { LocLink as Link } from '../i18n/index.jsx'
+import { useData, useTr } from '../i18n/index.jsx'
 
 export default function Footer() {
+  const { footerColumns } = useData()
+  const tr = useTr()
   return (
     <footer className="bg-noir text-paper">
       <div className="max-w-page mx-auto px-6 md:px-10 py-16 md:py-20">
@@ -9,7 +11,7 @@ export default function Footer() {
           <div className="col-span-2">
             <img src="/images/logo-lockup.png" alt="LARPILOTE" className="h-9 w-auto -ml-1" />
             <p className="mt-4 text-sm opacity-60 max-w-[240px] leading-relaxed">
-              Gestion virtuelle et pilotage opérationnel de vos locations courte durée, à distance.
+              {tr("Gestion virtuelle et pilotage opérationnel de vos locations courte durée, à distance.")}
             </p>
           </div>
 
@@ -30,7 +32,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 pt-8 border-t border-paper/10 text-xs opacity-50">
-          © 2026 LARPILOTE — Tous droits réservés.
+          {tr("© 2026 LARPILOTE — Tous droits réservés.")}
         </div>
       </div>
     </footer>

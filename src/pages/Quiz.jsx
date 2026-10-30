@@ -6,7 +6,8 @@ import PageHero from '../components/ui/PageHero'
 import Reveal from '../components/Reveal'
 import SEO from '../components/SEO'
 import { seoData } from '../seoData'
-import { quizQuestions, recommendPlan, plans } from '../data'
+import { quizQuestions, recommendPlan } from '../data'
+import { useData, useTr } from '../i18n/index.jsx'
 
 const initialAnswers = {
   profile: '',
@@ -21,6 +22,8 @@ const initialAnswers = {
 }
 
 export default function Quiz() {
+  const tr = useTr()
+  const { plans } = useData()
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState(initialAnswers)
   const [done, setDone] = useState(false)
@@ -61,16 +64,16 @@ export default function Quiz() {
     <>
       <SEO {...seoData['/trouver-ma-formule']} path="/trouver-ma-formule" />
       <PageHero
-        kicker="Diagnostic gratuit"
-        title="Quelques questions pour cerner votre besoin."
-        subtitle="Pas d’intelligence artificielle compliquée : juste les bonnes questions pour vous orienter vers la formule adaptée."
+        kicker={tr("Diagnostic gratuit")}
+        title={tr("Quelques questions pour cerner votre besoin.")}
+        subtitle={tr("Pas d’intelligence artificielle compliquée : juste les bonnes questions pour vous orienter vers la formule adaptée.")}
       />
 
       <Section>
         <div className="max-w-xl mx-auto">
           {!done ? (
             <Reveal key={question.id}>
-              <p className="kicker mb-3">Question {step + 1} / {quizQuestions.length}</p>
+              <p className="kicker mb-3">{tr("Question")} {step + 1} / {quizQuestions.length}</p>
               <div className="h-1 bg-noir/10 mb-10">
                 <div
                   className="h-full bg-gold transition-all duration-300"
@@ -78,14 +81,14 @@ export default function Quiz() {
                 />
               </div>
 
-              <h2 className="font-display text-2xl md:text-3xl mb-8">{question.question}</h2>
+              <h2 className="font-display text-2xl md:text-3xl mb-8">{tr(question.question)}</h2>
 
               {question.type === 'text' ? (
                 <input
                   type="text"
                   value={answers[question.id]}
                   onChange={(e) => setAnswers((a) => ({ ...a, [question.id]: e.target.value }))}
-                  placeholder={question.placeholder}
+                  placeholder={tr(question.placeholder)}
                   className="w-full border border-noir/20 px-5 py-4 bg-transparent focus:border-noir outline-none"
                 />
               ) : (
@@ -106,7 +109,7 @@ export default function Quiz() {
                         <span className={`w-4 h-4 shrink-0 border flex items-center justify-center ${question.type === 'multi' ? '' : 'rounded-full'} ${checked ? 'border-gold-light' : 'border-current opacity-40'}`}>
                           {checked && <Icon name="check" className="w-3 h-3" strokeWidth={2} />}
                         </span>
-                        {opt}
+                        {tr(opt)}
                       </label>
                     )
                   })}
@@ -120,22 +123,22 @@ export default function Quiz() {
                   disabled={step === 0}
                   className="text-sm opacity-60 disabled:opacity-20"
                 >
-                  Précédent
+                  {tr("Précédent")}
                 </button>
                 <Button onClick={next} variant="dark" withArrow disabled={!canContinue}>
-                  {isLast ? 'Voir mon profil' : 'Suivant'}
+                  {isLast ? tr("Voir mon profil") : tr("Suivant")}
                 </Button>
               </div>
             </Reveal>
           ) : (
             <Reveal className="text-center">
-              <p className="kicker mb-4">Votre résultat</p>
-              <p className="text-lg opacity-70">Votre profil correspond à :</p>
+              <p className="kicker mb-4">{tr("Votre résultat")}</p>
+              <p className="text-lg opacity-70">{tr("Votre profil correspond à :")}</p>
               <p className="mt-3 font-display text-4xl md:text-5xl">{resultPlan.name}</p>
               <p className="mt-5 max-w-md mx-auto opacity-70 leading-relaxed">{resultPlan.longTagline}</p>
               <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
-                <Button to={`/contact?forfait=${resultPlan.slug}`} variant="dark" withArrow>Parler à LARPILOTE</Button>
-                <Button onClick={restart} variant="outline">Refaire le test</Button>
+                <Button to={`/contact?forfait=${resultPlan.slug}`} variant="dark" withArrow>{tr("Parler à LARPILOTE")}</Button>
+                <Button onClick={restart} variant="outline">{tr("Refaire le test")}</Button>
               </div>
             </Reveal>
           )}

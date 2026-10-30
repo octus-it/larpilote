@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { LocLink as Link } from '../i18n/index.jsx'
 
 export default function Logo({ className = '' }) {
   return (

@@ -4,9 +4,11 @@ import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
 import SEO from '../components/SEO'
 import { seoData } from '../seoData'
-import { servicesDetailed } from '../data'
+import { useData, useTr } from '../i18n/index.jsx'
 
 export default function ServicesPage() {
+  const tr = useTr()
+  const { servicesDetailed } = useData()
   return (
     <>
       <SEO {...seoData['/services']} path="/services" />
@@ -14,9 +16,9 @@ export default function ServicesPage() {
         image="/images/services-larpilote.jpeg"
         imagePosition="center 20%"
         minHeight={false}
-        kicker="Nos services"
-        title="Un pilotage à distance. Une gestion plus fluide."
-        subtitle="LARPILOTE centralise les tâches digitales et opérationnelles qui permettent à votre activité de location courte durée de fonctionner au quotidien."
+        kicker={tr("Nos services")}
+        title={tr("Un pilotage à distance. Une gestion plus fluide.")}
+        subtitle={tr("LARPILOTE centralise les tâches digitales et opérationnelles qui permettent à votre activité de location courte durée de fonctionner au quotidien.")}
       />
 
       {servicesDetailed.map((s, i) => (

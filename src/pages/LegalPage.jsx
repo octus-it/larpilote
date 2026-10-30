@@ -3,15 +3,16 @@ import Section from '../components/ui/Section'
 import PageHero from '../components/ui/PageHero'
 import SEO from '../components/SEO'
 import { seoData } from '../seoData'
-import { legalPages } from '../legalContent'
+import { useLegalPage, useTr } from '../i18n/index.jsx'
 
 export default function LegalPage({ slug, path }) {
-  const page = legalPages[slug]
+  const page = useLegalPage(slug)
+  const tr = useTr()
 
   return (
     <>
       <SEO {...seoData[path]} path={path} />
-      <PageHero kicker="Informations" title={page.title} subtitle={page.updated} />
+      <PageHero kicker={tr('Informations')} title={page.title} subtitle={page.updated} />
       <Section>
         <div className="max-w-2xl space-y-12">
           {page.sections.map((section) => (

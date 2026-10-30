@@ -15,8 +15,9 @@ import ContactPage from './pages/ContactPage'
 import About from './pages/About'
 import Quiz from './pages/Quiz'
 import LegalPage from './pages/LegalPage'
+import { useLang, useTr } from './i18n/index.jsx'
 
-const organizationSchema = {
+const organizationSchema = (lang, tr) => ({
   '@context': 'https://schema.org',
   '@graph': [
     {
@@ -25,7 +26,7 @@ const organizationSchema = {
       name: 'LARPILOTE',
       url: 'https://larpilote.com/',
       logo: 'https://larpilote.com/images/logo-mark.png',
-      description: 'Gestion virtuelle et pilotage opérationnel à distance des locations courte durée pour propriétaires et conciergeries.',
+      description: tr('Gestion virtuelle et pilotage opérationnel à distance des locations courte durée pour propriétaires et conciergeries.'),
       email: 'support@larpilote.com',
       telephone: '+1-819-809-5434',
       areaServed: 'Worldwide',
@@ -36,34 +37,45 @@ const organizationSchema = {
       name: 'LARPILOTE',
       url: 'https://larpilote.com/',
       publisher: { '@id': 'https://larpilote.com/#organization' },
-      inLanguage: 'fr-FR',
+      inLanguage: lang === 'en' ? 'en' : 'fr-FR',
     },
   ],
-}
+})
+
+const pages = [
+  ['/', <Home />],
+  ['/proprietaires', <Owners />],
+  ['/conciergeries', <Concierges />],
+  ['/services', <ServicesPage />],
+  ['/comment-ca-marche', <HowItWorksPage />],
+  ['/faq', <FAQPage />],
+  ['/contact', <ContactPage />],
+  ['/a-propos', <About />],
+  ['/trouver-ma-formule', <Quiz />],
+  ['/mentions-legales', <LegalPage slug="mentions" path="/mentions-legales" />],
+  ['/confidentialite', <LegalPage slug="confidentialite" path="/confidentialite" />],
+  ['/cgv', <LegalPage slug="cgv" path="/cgv" />],
+  ['/cookies', <LegalPage slug="cookies" path="/cookies" />],
+]
 
 export default function App() {
+  const lang = useLang()
+  const tr = useTr()
   return (
     <div className="min-h-screen bg-paper text-noir font-body">
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+      <Helmet htmlAttributes={{ lang }}>
+        <script type="application/ld+json">{JSON.stringify(organizationSchema(lang, tr))}</script>
       </Helmet>
       <ScrollToTop />
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/proprietaires" element={<Owners />} />
-        <Route path="/conciergeries" element={<Concierges />} />
-        <Route path="/services" element={<ServicesPage />} />
+        {['', '/en'].flatMap((prefix) =>
+          pages.map(([path, element]) => (
+            <Route key={prefix + path} path={path === '/' ? prefix || '/' : prefix + path} element={element} />
+          ))
+        )}
         <Route path="/forfaits" element={<Navigate to="/#tarifs" replace />} />
-        <Route path="/comment-ca-marche" element={<HowItWorksPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/a-propos" element={<About />} />
-        <Route path="/trouver-ma-formule" element={<Quiz />} />
-        <Route path="/mentions-legales" element={<LegalPage slug="mentions" path="/mentions-legales" />} />
-        <Route path="/confidentialite" element={<LegalPage slug="confidentialite" path="/confidentialite" />} />
-        <Route path="/cgv" element={<LegalPage slug="cgv" path="/cgv" />} />
-        <Route path="/cookies" element={<LegalPage slug="cookies" path="/cookies" />} />
+        <Route path="/en/forfaits" element={<Navigate to="/en#tarifs" replace />} />
       </Routes>
       <Footer />
       <WhatsAppButton />

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLocalePath } from '../../i18n/index.jsx'
 import { Icon } from '../../lib/icons'
 
 const variants = {
@@ -10,6 +11,7 @@ const variants = {
 }
 
 export default function Button({ to, href, onClick, type = 'button', variant = 'dark', className = '', children, withArrow = false, ...rest }) {
+  const lp = useLocalePath()
   const base = `inline-flex items-center justify-center gap-2 font-mono text-xs tracking-[0.12em] uppercase px-6 py-4 transition-colors duration-200 ${variants[variant]} ${className}`
 
   const content = (
@@ -21,7 +23,7 @@ export default function Button({ to, href, onClick, type = 'button', variant = '
 
   if (to) {
     return (
-      <Link to={to} className={base} {...rest}>
+      <Link to={lp(to)} className={base} {...rest}>
         {content}
       </Link>
     )

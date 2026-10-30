@@ -1,7 +1,8 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { LocLink as Link } from '../i18n/index.jsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Icon } from '../lib/icons'
+import { useTr } from '../i18n/index.jsx'
 
 const container = {
   hidden: {},
@@ -39,6 +40,7 @@ export function HeroCTA({ to, children, variant = 'secondary' }) {
 }
 
 export default function HeroHome({ image, kicker, title, subtitle, text, children }) {
+  const tr = useTr()
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['-4%', '8%'])
@@ -102,7 +104,7 @@ export default function HeroHome({ image, kicker, title, subtitle, text, childre
         transition={{ delay: 1.3, duration: 0.8 }}
         className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-paper/50"
       >
-        <span className="kicker !text-paper/50">Découvrir</span>
+        <span className="kicker !text-paper/50">{tr("Découvrir")}</span>
         <motion.span animate={{ y: [0, 8, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}>
           <Icon name="arrowRight" className="w-4 h-4 rotate-90" strokeWidth={1.5} />
         </motion.span>

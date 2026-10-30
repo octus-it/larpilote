@@ -5,9 +5,12 @@ import PageHero from '../components/ui/PageHero'
 import ContactForm from '../components/ContactForm'
 import SEO from '../components/SEO'
 import { seoData } from '../seoData'
-import { plans, whatsappLink } from '../data'
+import { whatsappLink } from '../data'
+import { useData, useTr } from '../i18n/index.jsx'
 
 export default function ContactPage() {
+  const tr = useTr()
+  const { plans } = useData()
   const [params] = useSearchParams()
   const forfaitSlug = params.get('forfait')
   const profilParam = params.get('profil')
@@ -30,10 +33,10 @@ export default function ContactPage() {
         image="/images/contact-larpilote.jpeg"
         imagePosition="center 30%"
         minHeight={false}
-        kicker="Contact"
-        title="Parlons de votre activité."
-        subtitle="Vous êtes propriétaire d’une location courte durée ou dirigez une conciergerie ?"
-        text="Expliquez-nous votre situation. Nous déterminerons ensemble le niveau de pilotage dont vous avez besoin."
+        kicker={tr("Contact")}
+        title={tr("Parlons de votre activité.")}
+        subtitle={tr("Vous êtes propriétaire d’une location courte durée ou dirigez une conciergerie ?")}
+        text={tr("Expliquez-nous votre situation. Nous déterminerons ensemble le niveau de pilotage dont vous avez besoin.")}
       />
 
       <Section>
@@ -43,18 +46,18 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <p className="kicker mb-6">Besoin d’une réponse rapide ?</p>
+            <p className="kicker mb-6">{tr("Besoin d’une réponse rapide ?")}</p>
             <div className="space-y-6">
               <a
-                href={whatsappLink('Bonjour LARPILOTE, j’aimerais échanger sur mon activité.')}
+                href={whatsappLink(tr("Bonjour LARPILOTE, j’aimerais échanger sur mon activité."))}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-start gap-4 border border-noir/10 p-5 hover:border-noir/30 transition-colors"
               >
                 <WhatsAppIcon className="w-5 h-5 text-gold shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-display text-lg">WhatsApp</p>
-                  <p className="text-sm opacity-70 mt-1">Échangez directement avec notre équipe.</p>
+                  <p className="font-display text-lg">{tr("WhatsApp")}</p>
+                  <p className="text-sm opacity-70 mt-1">{tr("Échangez directement avec notre équipe.")}</p>
                 </div>
               </a>
               <a
@@ -63,8 +66,8 @@ export default function ContactPage() {
               >
                 <Icon name="mail" className="w-5 h-5 text-gold shrink-0 mt-0.5" strokeWidth={1.5} />
                 <div>
-                  <p className="font-display text-lg">E-mail</p>
-                  <p className="text-sm opacity-70 mt-1">Pour les demandes détaillées et professionnelles.</p>
+                  <p className="font-display text-lg">{tr("E-mail")}</p>
+                  <p className="text-sm opacity-70 mt-1">{tr("Pour les demandes détaillées et professionnelles.")}</p>
                 </div>
               </a>
             </div>

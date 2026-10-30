@@ -1,15 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Icon } from '../lib/icons'
+import { localizePath, stripLang, useLang } from '../i18n/index.jsx'
 
 const languages = [
   { code: 'fr', label: 'Français', short: 'FR', flag: '/images/flags/france.svg', available: true },
-  { code: 'en', label: 'Anglais', short: 'EN', flag: '/images/flags/gb.svg', available: true },
+  { code: 'en', label: 'English', short: 'EN', flag: '/images/flags/gb.svg', available: true },
 ]
 
 export default function LanguageDropdown({ variant = 'light' }) {
   const [open, setOpen] = useState(false)
-  const [lang, setLang] = useState('en')
+  const lang = useLang()
+  const { pathname, search, hash } = useLocation()
+  const navigate = useNavigate()
   const ref = useRef(null)
   const current = languages.find((l) => l.code === lang)
 
@@ -23,8 +27,8 @@ export default function LanguageDropdown({ variant = 'light' }) {
 
   const select = (l) => {
     if (!l.available) return
-    setLang(l.code)
     setOpen(false)
+    if (l.code !== lang) navigate(`${localizePath(stripLang(pathname), l.code)}${search}${hash}`)
   }
 
   const isDark = variant === 'dark'
@@ -35,7 +39,7 @@ export default function LanguageDropdown({ variant = 'light' }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        aria-label="Choisir la langue"
+        aria-label="Language / Langue"
         className={`flex items-center gap-2 px-3 py-2 text-sm transition-colors ${
           isDark ? 'text-paper/80 hover:text-paper' : 'text-noir/75 hover:text-noir'
         }`}

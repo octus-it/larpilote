@@ -251,9 +251,18 @@ export const commonConditions = [
   'LARPILOTE fournit un accompagnement opérationnel et des recommandations. Aucun résultat précis en matière de revenus, de réservations ou de classement n’est garanti.',
 ]
 
-// Durée d'engagement et conditions de résiliation : à fournir par la direction.
-// Tant que la valeur est null, rien n'est affiché sur le site.
-export const engagementTerms = null
+// Engagement et résiliation (validés par la direction) — formules Essentiel et Business.
+// Relais : conditions particulières définies à la souscription.
+export const engagementTerms = {
+  title: 'Engagement et résiliation — formules Essentiel et Business',
+  items: [
+    'Durée d’engagement : abonnement mensuel, sans durée minimale d’engagement.',
+    'Facturation : mensuelle.',
+    'Renouvellement : automatique chaque mois, sauf résiliation.',
+    'Résiliation : possible à tout moment par e-mail à support@larpilote.com, avec un préavis de 30 jours. La résiliation prend effet 30 jours après la réception de votre e-mail.',
+  ],
+  relais: 'Formule Relais : les conditions particulières sont définies au moment de la souscription.',
+}
 
 // Adresse qui reçoit les demandes des formulaires (envoi via Resend).
 export const requestEmail = 'support@larpilote.com'
